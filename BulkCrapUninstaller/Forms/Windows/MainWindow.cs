@@ -1211,19 +1211,19 @@ namespace BulkCrapUninstaller.Forms
                 uninstallerObjectListView.CheckObject(e.RowObject);
             }
 
-            switch (Settings.Default.UninstallerListDoubleClickAction)
-            {
-                case UninstallerListDoubleClickAction.DoNothing:
-                    break;
-                case UninstallerListDoubleClickAction.OpenProperties:
-                    OpenProperties(sender, e);
-                    break;
-                case UninstallerListDoubleClickAction.Uninstall:
-                    RunLoudUninstall(sender, e);
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException(nameof(UninstallerListDoubleClickAction), Settings.Default.UninstallerListDoubleClickAction, "Unhandled value");
-            }
+            //switch (Settings.Default.UninstallerListDoubleClickAction)
+            //{
+            //    case UninstallerListDoubleClickAction.DoNothing:
+            //        break;
+            //    case UninstallerListDoubleClickAction.OpenProperties:
+            //        OpenProperties(sender, e);
+            //        break;
+            //    case UninstallerListDoubleClickAction.Uninstall:
+            //        RunLoudUninstall(sender, e);
+            //        break;
+            //    default:
+            //        throw new ArgumentOutOfRangeException(nameof(UninstallerListDoubleClickAction), Settings.Default.UninstallerListDoubleClickAction, "Unhandled value");
+            //}
 
             //uninstallerObjectListView.CancelCellEdit();
         }
@@ -1243,6 +1243,11 @@ namespace BulkCrapUninstaller.Forms
         private void uninstallerObjectListView_Click(object sender, EventArgs e)
         {
             _ignoreCellEdit = false;
+        }
+
+        private void uninstallerObjectListView_DoubleClick(object sender, EventArgs e)
+        {
+            _appUninstaller.RunUninstall(_listView.SelectedUninstallers, _listView.AllUninstallers, false);
         }
 
         private void uninstallerObjectListView_KeyDown(object sender, KeyEventArgs e)

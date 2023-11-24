@@ -16,6 +16,8 @@ namespace BulkCrapUninstaller.Controls
         public UninstallationSettings()
         {
             InitializeComponent();
+            checkBoxSimulate.Checked = false;
+            checkBoxSimulate.Enabled = false;
         }
 
         protected override void OnLoad(EventArgs e)

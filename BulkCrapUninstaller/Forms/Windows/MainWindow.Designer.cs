@@ -338,6 +338,7 @@ namespace BulkCrapUninstaller.Forms
             uninstallerObjectListView.Click += uninstallerObjectListView_Click;
             uninstallerObjectListView.KeyDown += uninstallerObjectListView_KeyDown;
             uninstallerObjectListView.KeyUp += HandleListViewMenuKeystroke;
+            uninstallerObjectListView.MouseDoubleClick += uninstallerObjectListView_DoubleClick;
             // 
             // olvColumnDisplayName
             // 
@@ -583,6 +584,7 @@ namespace BulkCrapUninstaller.Forms
             // propertiesSidebar
             // 
             resources.ApplyResources(propertiesSidebar, "propertiesSidebar");
+            propertiesSidebar.InvalidEnabled = true;
             propertiesSidebar.Name = "propertiesSidebar";
             propertiesSidebar.OrphansEnabled = true;
             propertiesSidebar.ProtectedEnabled = true;

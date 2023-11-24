@@ -206,13 +206,32 @@ namespace BulkCrapUninstaller.Functions
                     using (var wizard = new BeginUninstallTaskWizard())
                     {
                         wizard.Initialize(targetList, allUninstallerList.ToList(), quiet);
+                        //wizard.ShowDialog(null);
 
                         wizard.StartPosition = FormStartPosition.CenterParent;
                         if (wizard.ShowDialog(MessageBoxes.DefaultOwner) != DialogResult.OK || wizard.Results.Length == 0)
                             return;
 
                         taskEntries = wizard.Results;
+                        //wizard.Close();
                     }
+                    //List<ApplicationUninstallerEntry> _otherUninstallers;
+                    //_otherUninstallers = allUninstallers
+                    //                    .Except(targetList)
+                    //                    .Where(x => !x.SystemComponent && !x.IsProtected)
+                    //                    .ToList();
+                    //var relatedUninstallers = _otherUninstallers.Select(
+                    //                            x => new { Entry = x, Related = GetRelatedUninstallers(x, _selectedUninstallers).ToList() })
+                    //                            .Where(x => x.Related.Any()).ToList();
+
+                    //var additionals = relatedUninstallerAdder1.GetResults();
+                    //var taskEntries = ConvertToTaskEntries(_selectedUninstallers.Concat(additionals));
+                    //taskEntries = SortTaskEntryList(taskEntries);
+                    //uninstallConfirmation1.SetRelatedApps(taskEntries);
+
+                    //BulkUninstallEntry[] Results = UninstallConfirmation.GetResults().ToArray();
+                    //taskEntries = Results;
+
 
                     _visibleCallback(false);
 
