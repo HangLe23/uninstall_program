@@ -138,7 +138,7 @@
   <data name="olvColumnSize.Text" xml:space="preserve">
     <value>Velikost</value>
   </data>
-  <data name="olvColumnStartup.Text" xml:space="preserve">
+  <data name=".Text" xml:space="preserve">
     <value>Zagon</value>
   </data>
   <data name="olvColumnIs64.Text" xml:space="preserve">

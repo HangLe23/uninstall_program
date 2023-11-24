@@ -129,7 +129,7 @@
   <data name="olvColumnSize.Text" xml:space="preserve">
     <value>Größe</value>
   </data>
-  <data name="olvColumnStartup.Text" xml:space="preserve">
+  <data name=".Text" xml:space="preserve">
     <value>Autostart</value>
   </data>
   <data name="olvColumnUninstallString.Text" xml:space="preserve">

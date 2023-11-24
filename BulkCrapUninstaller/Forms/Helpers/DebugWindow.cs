@@ -197,9 +197,6 @@ namespace BulkCrapUninstaller.Forms
             }
         }
 
-        private void button14_Click(object sender, EventArgs e)
-        {
-            FeedbackBox.ShowFeedbackBox(this, true);
-        }
+       
     }
 }

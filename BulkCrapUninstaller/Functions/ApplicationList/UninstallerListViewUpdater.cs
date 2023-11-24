@@ -42,14 +42,6 @@ namespace BulkCrapUninstaller.Functions.ApplicationList
             _iconGetter = new UninstallerIconGetter();
             _reference.olvColumnDisplayName.ImageGetter = _iconGetter.ColumnImageGetter;
 
-            // Refresh items marked as invalid after corresponding setting change
-            _settings.Subscribe((x, y) =>
-            {
-                if (CheckIsAppDisposed()) return;
-
-                if (!_firstRefresh)
-                    _listView.ListView.RefreshObjects(AllUninstallers.Where(u => !u.IsValid).ToList());
-            }, x => x.AdvancedTestInvalid, this);
 
             // Refresh items marked as orphans after corresponding setting change
             _settings.Subscribe((x, y) =>

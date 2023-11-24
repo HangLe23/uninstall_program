@@ -430,7 +430,7 @@ namespace BulkCrapUninstaller.Forms
             this.button14.TabIndex = 12;
             this.button14.Text = "Feedback box";
             this.button14.UseVisualStyleBackColor = true;
-            this.button14.Click += new System.EventHandler(this.button14_Click);
+            //this.button14.Click += new System.EventHandler(this.button14_Click);
             // 
             // DebugWindow
             // 

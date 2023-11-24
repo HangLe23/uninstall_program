@@ -49,8 +49,6 @@ namespace BulkCrapUninstaller.Forms
         private readonly WindowStyleController _styleController;
         private readonly AppUninstaller _appUninstaller;
         private readonly UninstallerListConfigurator _uninstallerListConfigurator;
-
-        private readonly ListLegendWindow _listLegendWindow = new();
         private DebugWindow _debugWindow;
 
         private bool _previousListLegendState = true;
@@ -105,20 +103,11 @@ namespace BulkCrapUninstaller.Forms
                 uninstallerObjectListView.RefreshObjects(objects);
             }, CertificateCache);
 
-            // Start the processing thread when user changes the test certificates option
-            _setMan.Selected.Subscribe(OnTestCertificatesChanged, x => x.AdvancedTestCertificates, this);
-
             _uninstallerListConfigurator = new UninstallerListConfigurator(this);
             _uninstallerListConfigurator.AfterFiltering += (x, y) => _uninstallerListPostProcesser.StartProcessingThread(_listView.FilteredUninstallers);
             _uninstallerListConfigurator.AfterFiltering += RefreshStatusbarTotalLabel;
 
-            _appUninstaller = new AppUninstaller(_listView.InitiateListRefresh, LockApplication, SetVisible);
-
-            toolStripButtonSelAll.Click += _listView.SelectAllItems;
-            toolStripButtonSelNone.Click += _listView.DeselectAllItems;
-            toolStripButtonSelInv.Click += _listView.InvertSelectedItems;
             _uninstallerListPostProcesser.UninstallerPostprocessingProgressUpdate += UpdateStatusbarOnPostprocessingUpdate;
-            _uninstallerListPostProcesser.UninstallerFileLock = _appUninstaller.PublicUninstallLock;
             _listView.ListRefreshIsRunningChanged += listView_ListRefreshIsRunningChanged;
 
             // Filter changed events
@@ -222,7 +211,6 @@ namespace BulkCrapUninstaller.Forms
                 new Thread(UsageTrackerSendData).Start();
 
                 DisposeListPostProcessor(this, e);
-                _listLegendWindow?.Dispose();
                 _uninstallerListConfigurator?.Dispose();
                 _debugWindow?.Dispose();
                 _uninstallerListPostProcesser?.Dispose();
@@ -257,15 +245,6 @@ namespace BulkCrapUninstaller.Forms
                 var trimmed = paths.Select(path => path.Trim().Trim('"').Trim()).ToArray();
                 UninstallToolsGlobalConfig.CustomProgramFiles = trimmed;
             }, x => x.FoldersCustomProgramDirs, this);
-
-            _setMan.Selected.Subscribe((x, y) => _listView.RefreshList(), x => x.AdvancedHighlightSpecial, this);
-
-            _setMan.Selected.Subscribe(OnApplicationListVisibleItemsChanged, x => x.AdvancedTestCertificates, this);
-            _setMan.Selected.Subscribe(OnApplicationListVisibleItemsChanged, x => x.AdvancedTestInvalid, this);
-            _setMan.Selected.Subscribe(OnApplicationListVisibleItemsChanged, x => x.AdvancedHighlightSpecial, this);
-            _setMan.Selected.Subscribe(OnApplicationListVisibleItemsChanged, x => x.FilterShowStoreApps, this);
-            _setMan.Selected.Subscribe(OnApplicationListVisibleItemsChanged, x => x.FilterShowWinFeatures, this);
-            _setMan.Selected.Subscribe(OnApplicationListVisibleItemsChanged, x => x.AdvancedDisplayOrphans, this);
 
             _setMan.Selected.Subscribe((x, y) => UninstallToolsGlobalConfig.ScanSteam = y.NewValue, x => x.ScanSteam, this);
             _setMan.Selected.Subscribe((x, y) => UninstallToolsGlobalConfig.ScanStoreApps = y.NewValue, x => x.ScanStoreApps, this);
@@ -377,22 +356,6 @@ namespace BulkCrapUninstaller.Forms
             treeMap1.Populate(_listView.FilteredUninstallers);
         }
 
-        private void OnApplicationListVisibleItemsChanged(object sender, EventArgs e)
-        {
-            UpdateListView();
-        }
-
-        private void UpdateListView()
-        {
-            var force = advancedFilters1.CurrentList != null;
-            _listLegendWindow.ListLegend.CertificatesEnabled = force || _setMan.Selected.Settings.AdvancedTestCertificates;
-            _listLegendWindow.ListLegend.InvalidEnabled = force || _setMan.Selected.Settings.AdvancedTestInvalid && _anyInvalid;
-            _listLegendWindow.ListLegend.StoreAppEnabled = force || _setMan.Selected.Settings.FilterShowStoreApps && _anyStoreApps && _setMan.Selected.Settings.AdvancedHighlightSpecial;
-            _listLegendWindow.ListLegend.OrphanedEnabled = force || _setMan.Selected.Settings.AdvancedDisplayOrphans && _anyOrphans && _setMan.Selected.Settings.AdvancedHighlightSpecial;
-            _listLegendWindow.ListLegend.WinFeatureEnabled = force || _setMan.Selected.Settings.FilterShowWinFeatures && _anyWinFeatures && _setMan.Selected.Settings.AdvancedHighlightSpecial;
-            _listLegendWindow.UpdatePosition(uninstallerObjectListView);
-        }
-
         private void RefreshTitleBar(object sender, EventArgs e)
         {
             var result = MainTitleBarText;
@@ -446,27 +409,6 @@ namespace BulkCrapUninstaller.Forms
             });
         }
 
-        private void SetVisible(bool val)
-        {
-            this.SafeInvoke(() =>
-            {
-                Visible = val;
-                if (_listLegendWindow != null)
-                {
-                    if (val)
-                    {
-                        _setMan.Selected.Settings.UninstallerListShowLegend = _previousListLegendState;
-                        //_listLegendWindow.Visible = _previousListLegendState;
-                    }
-                    else
-                    {
-                        _previousListLegendState = _setMan.Selected.Settings.UninstallerListShowLegend;
-                        _listLegendWindow.Visible = false;
-                    }
-                }
-            });
-        }
-
         internal static void OpenUrls(IEnumerable<Uri> urls)
         {
             if (WindowsTools.IsNetworkAvailable())
@@ -496,54 +438,13 @@ namespace BulkCrapUninstaller.Forms
             }
         }
 
-        private void advancedOperationsToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
-        {
-            var selectionCount = _listView.SelectedUninstallerCount;
-            openKeyInRegeditToolStripMenuItem.Enabled = selectionCount == 1;
-            deleteToolStripMenuItem.Enabled = selectionCount > 0;
-            createBackupToolStripMenuItem.Enabled = selectionCount > 0;
-            msiUninstalltoolStripMenuItem.Enabled = selectionCount == 1;
-
-            var autostart = _listView.SelectedUninstallers.Any(
-                u => u.StartupEntries != null && u.StartupEntries.Any(se => !se.Disabled));
-            disableAutostartToolStripMenuItem.Enabled = autostart;
-
-            // Take ownership list
-            var ownershipList = takeOwnershipToolStripMenuItem.DropDownItems.Cast<ToolStripItem>().ToList();
-            takeOwnershipToolStripMenuItem.DropDownItems.Clear();
-            foreach (var dropDownItem in ownershipList)
-                dropDownItem.Dispose();
-
-            takeOwnershipToolStripMenuItem.DropDownItems.AddRange(
-                _listView.SelectedUninstallers
-                .SelectMany(x => new[] { x.InstallLocation, x.UninstallerLocation })
-                .Where(dir => !string.IsNullOrEmpty(dir))
-                .DistinctBy(x => x.ToLowerInvariant())
-                .OrderBy(x => x)
-                .Select(dir => (ToolStripItem)new ToolStripMenuItem(dir, null, (obj, args) => TakeOwnership(dir)))
-                .ToArray());
-        }
-
-        private static void TakeOwnership(string directoryPath)
-        {
-            PremadeDialogs.StartProcessSafely("cmd.exe", $"/c takeown /f \"{directoryPath}\" && icacls \"{directoryPath}\" /grant administrators:F && pause");
-        }
-
+     
         private void BackgroundSearchForUpdates()
         {
             UpdateGrabber.AutoUpdate(() => _listView.FirstRefreshCompleted,
                 v => this.SafeInvoke(() => UpdateGrabber.AskAndBeginUpdate(v)));
         }
 
-        private void basicOperationsToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
-        {
-            var selectionCount = _listView.SelectedUninstallerCount;
-            uninstallToolStripMenuItem.Enabled = selectionCount > 0;
-            quietUninstallToolStripMenuItem.Enabled = selectionCount > 0;
-            propertiesToolStripMenuItem.Enabled = selectionCount > 0;
-            modifyToolStripMenuItem.Enabled = selectionCount == 1 &&
-                !string.IsNullOrEmpty(_listView.SelectedUninstallers.FirstOrDefault()?.ModifyPath);
-        }
 
         private void BindControlsToSettings()
         {
@@ -566,29 +467,13 @@ namespace BulkCrapUninstaller.Forms
             settings.Subscribe((x, y) => statusStrip1.Visible = y.NewValue,
                 x => x.ToolbarsShowStatusbar, this);
 
-            settings.Subscribe((x, y) =>
-            {
-                if (_listView.CheckIsAppDisposed()) return;
-
-                try
-                {
-                    uninstallerObjectListView.CheckBoxes = y.NewValue;
-                }
-                catch (InvalidOperationException)
-                {
-                    // Setting CheckBoxes value throws this exception (even though it works fine).
-                }
-                _listView.RefreshList();
-                uninstallerObjectListView_SelectedChanged(this, EventArgs.Empty);
-            }, x => x.UninstallerListUseCheckboxes, this);
-
-            settings.Subscribe((x, y) =>
+            /*settings.Subscribe((x, y) =>
             {
                 if (_listView.CheckIsAppDisposed()) return;
 
                 uninstallerObjectListView.ShowGroups = y.NewValue;
                 _listView.RefreshList();
-            }, x => x.UninstallerListUseGroups, this);
+            }, x => x.UninstallerListUseGroups, this)*/;
 
             settings.Subscribe(RefreshList, x => x.FilterHideMicrosoft, this);
             settings.Subscribe(RefreshList, x => x.FilterShowUpdates, this);
@@ -598,13 +483,6 @@ namespace BulkCrapUninstaller.Forms
             settings.Subscribe(RefreshList, x => x.FilterShowWinFeatures, this);
             settings.Subscribe(RefreshList, x => x.FilterShowTweaks, this);
 
-            settings.Subscribe((sender, args) =>
-            {
-                if (_listView.CheckIsAppDisposed()) return;
-
-                olvColumnRating.IsVisible = args.NewValue;
-                uninstallerObjectListView.RebuildColumns();
-            }, x => x.MiscUserRatings, this);
         }
 
         private void RefreshSidebarVisibility(object sender, EventArgs e)
@@ -618,8 +496,6 @@ namespace BulkCrapUninstaller.Forms
             var sidebarOpen = _setMan.Selected.Settings.ToolbarsShowSettings && !ulistOpen;
             settingsSidebarPanel.Visible = sidebarOpen;
             settingsSidebarPanel.Enabled = sidebarOpen;
-
-            OnApplicationListVisibleItemsChanged(sender, e);
 
             ResumeLayout();
             this.EndControlUpdate();
@@ -774,7 +650,6 @@ namespace BulkCrapUninstaller.Forms
 
         private void helpToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
         {
-            //uninstallBCUninstallToolstripMenuItem.Visible = Program.IsInstalled;
             uninstallBCUninstallToolstripMenuItem.Enabled = Program.IsInstalled;
         }
 
@@ -790,17 +665,7 @@ namespace BulkCrapUninstaller.Forms
                 !WindowsTools.IsNetworkAvailable())
                 return;
 
-            if (!_setMan.Selected.Settings.MiscFeedbackNagNeverShow)
-            {
-                if (!_setMan.Selected.Settings.MiscFeedbackNagShown &&
-                    DateTime.Now - Process.GetCurrentProcess().StartTime > TimeSpan.FromMinutes(3))
-                {
-                    FeedbackBox.ShowFeedbackBox(this, true);
-                }
-
-                // Show the nag every other time
-                _setMan.Selected.Settings.MiscFeedbackNagShown = !_setMan.Selected.Settings.MiscFeedbackNagShown;
-            }
+            
         }
 
         private void MainWindow_Shown(object sender, EventArgs e)
@@ -825,28 +690,6 @@ namespace BulkCrapUninstaller.Forms
                 settingsSidebarPanel.Padding.Right;
         }
 
-        private void SetupAndShowLegendWindow()
-        {
-            if (IsDisposed || Disposing)
-                return;
-
-            _listLegendWindow.Show(this);
-            AddOwnedForm(_listLegendWindow);
-
-            _listLegendWindow.UpdatePosition(uninstallerObjectListView);
-            listViewPanel.Resize += (o, args) => _listLegendWindow.UpdatePosition(uninstallerObjectListView);
-            Move += (o, args) => _listLegendWindow.UpdatePosition(uninstallerObjectListView);
-            Controls[0].EnabledChanged += (o, args) => _listLegendWindow.Enabled = Controls[0].Enabled;
-
-            var settings = _setMan.Selected;
-            settings.Subscribe((x, y) => _listLegendWindow.Visible = y.NewValue, x => x.UninstallerListShowLegend, this);
-            _listLegendWindow.VisibleChanged += (x, y) =>
-            {
-                if (!_listLegendWindow.Visible && settings.Settings.UninstallerListShowLegend)
-                    settings.Settings.UninstallerListShowLegend = false;
-            };
-        }
-
         private void msiInstallContextMenuStripItem_Click(object sender, EventArgs e)
         {
             _appUninstaller.UninstallUsingMsi(MsiUninstallModes.InstallModify, _listView.SelectedUninstallers);
@@ -864,7 +707,7 @@ namespace BulkCrapUninstaller.Forms
 
         private void OnFirstApplicationStart()
         {
-            StartSetupWizard(false);
+            
 
             // On first start the updates are not searched from constructor to give user a chance to disable them.
             BackgroundSearchForUpdates();
@@ -963,11 +806,6 @@ namespace BulkCrapUninstaller.Forms
             {
                 propertiesWindow.ShowPropertiesDialog(_listView.SelectedUninstallers);
             }
-        }
-
-        private void OpenSubmitFeedbackWindow(object sender, EventArgs e)
-        {
-            FeedbackBox.ShowFeedbackBox(this, false);
         }
 
         private void OpenUninstallerLocation(object sender, EventArgs eventArgs)
@@ -1088,30 +926,6 @@ namespace BulkCrapUninstaller.Forms
         private void RunQuietUninstall(object x, EventArgs y)
         {
             _appUninstaller.RunUninstall(_listView.SelectedUninstallers, _listView.AllUninstallers, true);
-
-            /*var nonQuiet =
-                _listView.SelectedUninstallers.Where(o => !o.QuietUninstallPossible)
-                    .Select(p => p.DisplayName)
-                    .ToArray();
-
-            if (!nonQuiet.Any())
-                _uninstaller.RunUninstall(_listView.SelectedUninstallers, _listView.AllUninstallers, true);
-            else
-            {
-                switch (MessageBoxes.QuietUninstallersNotAvailableQuestion(nonQuiet))
-                {
-                    case MessageBoxes.PressedButton.Yes:
-                        _uninstaller.RunUninstall(_listView.SelectedUninstallers,
-                            _listView.AllUninstallers, true);
-                        break;
-                    case MessageBoxes.PressedButton.No:
-                        _uninstaller.RunUninstall(_listView.SelectedUninstallers.Where(p => p.QuietUninstallPossible),
-                            _listView.AllUninstallers, true);
-                        break;
-                    default:
-                        return;
-                }
-            }*/
         }
 
         private void searchToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1138,40 +952,9 @@ namespace BulkCrapUninstaller.Forms
             globalHotkeys1.Add(new HotkeyEntry(Keys.F, false, true, false, searchToolStripMenuItem_Click, null));
             globalHotkeys1.Add(new HotkeyEntry(Keys.F3, searchToolStripMenuItem));
 
-            // Basic operations
-            globalHotkeys1.Add(new HotkeyEntry(Keys.Delete, uninstallToolStripMenuItem));
-            globalHotkeys1.Add(new HotkeyEntry(Keys.Delete, false, false, true, quietUninstallToolStripMenuItem,
-                () => !_listView.CheckIsAppDisposed() && uninstallerObjectListView.ContainsFocus));
-            globalHotkeys1.Add(new HotkeyEntry(Keys.C, false, true, false, copyFullInformationToolStripMenuItem,
-                () => !_listView.CheckIsAppDisposed() && uninstallerObjectListView.ContainsFocus));
-            globalHotkeys1.Add(new HotkeyEntry(Keys.Enter, true, false, false, propertiesToolStripMenuItem,
-                () => !_listView.CheckIsAppDisposed() && uninstallerObjectListView.ContainsFocus));
-
-            // Advanced operations
-            globalHotkeys1.Add(new HotkeyEntry(Keys.Delete, false, true, true, manualUninstallToolStripMenuItem,
-                () => !_listView.CheckIsAppDisposed() && uninstallerObjectListView.ContainsFocus));
-            globalHotkeys1.Add(new HotkeyEntry(Keys.B, false, true, false, createBackupToolStripMenuItem,
-                () => !_listView.CheckIsAppDisposed() && uninstallerObjectListView.ContainsFocus));
-            globalHotkeys1.Add(new HotkeyEntry(Keys.R, false, true, false, openKeyInRegeditToolStripMenuItem,
-                () => !_listView.CheckIsAppDisposed() && uninstallerObjectListView.ContainsFocus));
-
             // Tools
             globalHotkeys1.Add(new HotkeyEntry(Keys.P, false, true, false, settingsToolStripMenuItem_Click,
                 settingsToolStripMenuItem));
-        }
-
-        private void OnClickStartSetupWizard(object sender, EventArgs e)
-        {
-            StartSetupWizard(true);
-        }
-
-        private void StartSetupWizard(bool canExit)
-        {
-            using (var wizard = new FirstStartBox(canExit))
-            {
-                wizard.StartPosition = FormStartPosition.CenterParent;
-                wizard.ShowDialog(this);
-            }
         }
 
         private void toolsToolStripMenuItem_DropDownOpening(object sender, EventArgs e)
@@ -1225,7 +1008,6 @@ namespace BulkCrapUninstaller.Forms
                     throw new ArgumentOutOfRangeException(nameof(UninstallerListDoubleClickAction), Settings.Default.UninstallerListDoubleClickAction, "Unhandled value");
             }
 
-            //uninstallerObjectListView.CancelCellEdit();
         }
 
         private void uninstallerObjectListView_CellRightClick(object sender, CellRightClickEventArgs e)
@@ -1235,7 +1017,6 @@ namespace BulkCrapUninstaller.Forms
 
             if (uninstallerObjectListView.CheckBoxes && !uninstallerObjectListView.IsChecked(e.Model))
             {
-                //uninstallerObjectListView.UncheckAll();
                 uninstallerObjectListView.CheckObject(e.Model);
             }
         }
@@ -1257,14 +1038,6 @@ namespace BulkCrapUninstaller.Forms
                 : string.Empty;
 
             toolStripLabelSize.Text = _listView.GetSelectedSize().ToString();
-
-            // Disable/enable edit menus
-            var anySelected = _listView.SelectedUninstallerCount > 0;
-            basicOperationsToolStripMenuItem.Enabled = anySelected;
-            advancedOperationsToolStripMenuItem.Enabled = anySelected;
-
-            toolStripButtonModify.Enabled = _listView.SelectedUninstallerCount == 1 &&
-                _listView.SelectedUninstallers.Count(x => !string.IsNullOrEmpty(x.ModifyPath)) == 1;
         }
 
         private void UpdateUninstallListContextMenuStrip(object sender, CancelEventArgs e)
@@ -1407,7 +1180,6 @@ namespace BulkCrapUninstaller.Forms
             propertiesSidebar.ProtectedEnabled = _anyProtected;
             propertiesSidebar.SysCompEnabled = _anySysComponents;
             propertiesSidebar.UpdatesEnabled = _anyUpdates;
-            propertiesSidebar.InvalidEnabled = _anyInvalid;
 
             if (e.FirstRefresh)
             {
@@ -1438,12 +1210,6 @@ namespace BulkCrapUninstaller.Forms
 
                 splashScreen1.CloseSplashScreen();
 
-                // Display the legend first so it is hidden under the splash
-                _listLegendWindow.Opacity = 0;
-                SetupAndShowLegendWindow();
-                // Needed in case main window starts maximized
-                _listLegendWindow.UpdatePosition(uninstallerObjectListView);
-                _listLegendWindow.Visible = _setMan.Selected.Settings.UninstallerListShowLegend;
 
                 new Thread(() =>
                 {
@@ -1456,21 +1222,9 @@ namespace BulkCrapUninstaller.Forms
                             OnFirstApplicationStart();
                         }
 
-                        if (Program.IsAfterUpgrade || isFirstRun)
-                        {
-                            NewsPopup.ShowPopup(this);
-                        }
-
-                        //if (!_setMan.Selected.Settings.MiscNet4NagShown && !Program.Net4IsAvailable)
-                        //{
-                        //    _setMan.Selected.Settings.MiscNet4NagShown = true;
-                        //    MessageBoxes.Net4MissingInfo();
-                        //}
                     });
                 }).Start();
             }
-
-            OnApplicationListVisibleItemsChanged(sender, e);
 
             filterEditor1.FocusSearchbox();
         }
@@ -1479,10 +1233,6 @@ namespace BulkCrapUninstaller.Forms
         {
             var results = StartupManagerWindow.ShowManagerDialog(this);
             toolStripLabelStatus.Text = Localisable.MainWindow_Statusbar_RefreshingStartup;
-
-            //Application.DoEvents();
-            //if (_listView.CheckIsAppDisposed())
-            //    return;
 
             Cursor = Cursors.WaitCursor;
             statusStrip1.Refresh();
@@ -1513,11 +1263,6 @@ namespace BulkCrapUninstaller.Forms
 
                 uninstallerObjectListView.RefreshObject(uninstaller);
             }
-        }
-
-        private void rateToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            _uninstallerListConfigurator.RatingManagerWrapper.RateEntries(_listView.SelectedUninstallers.ToArray(), Point.Empty);
         }
 
         private void OpenTargetWindow(object sender, EventArgs e)

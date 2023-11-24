@@ -2,12 +2,9 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="BulkCrapUninstaller.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="UninstallerListUseCheckboxes" Provider="PortableSettingsProvider.PortableSettingsProvider" Roaming="true" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
-    </Setting>
-    <Setting Name="UninstallerListUseGroups" Provider="PortableSettingsProvider.PortableSettingsProvider" Roaming="true" Type="System.Boolean" Scope="User">
+    <!--<Setting Name="UninstallerListUseGroups" Provider="PortableSettingsProvider.PortableSettingsProvider" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
-    </Setting>
+    </Setting>-->
     <Setting Name="FilterHideMicrosoft" Provider="PortableSettingsProvider.PortableSettingsProvider" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
@@ -97,12 +94,6 @@
     </Setting>
     <Setting Name="MiscUserId" Provider="PortableSettingsProvider.PortableSettingsProvider" Roaming="true" Type="System.UInt64" Scope="User">
       <Value Profile="(Default)">0</Value>
-    </Setting>
-    <Setting Name="AdvancedTestCertificates" Provider="PortableSettingsProvider.PortableSettingsProvider" Roaming="true" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="AdvancedTestInvalid" Provider="PortableSettingsProvider.PortableSettingsProvider" Roaming="true" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="AdvancedDisplayOrphans" Provider="PortableSettingsProvider.PortableSettingsProvider" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
@@ -213,9 +204,6 @@
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="ScanOculus" Provider="PortableSettingsProvider.PortableSettingsProvider" Roaming="true" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">True</Value>
-    </Setting>
-    <Setting Name="AdvancedHighlightSpecial" Provider="PortableSettingsProvider.PortableSettingsProvider" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="FoldersScanRemovable" Provider="PortableSettingsProvider.PortableSettingsProvider" Roaming="true" Type="System.Boolean" Scope="User">
