@@ -420,7 +420,7 @@
   <data name="groupBox1.Text" xml:space="preserve">
     <value>Chercher</value>
   </data>
-  <data name="olvColumnStartup.Text" xml:space="preserve">
+  <data name=".Text" xml:space="preserve">
     <value>Démarrage</value>
   </data>
   <data name="openStartupManagerToolStripMenuItem.Text" xml:space="preserve">

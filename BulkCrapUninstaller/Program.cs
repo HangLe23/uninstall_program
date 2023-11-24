@@ -14,7 +14,6 @@ using System.Runtime.InteropServices;
 using System.Security.Principal;
 using System.Xml.Linq;
 using BulkCrapUninstaller.Forms;
-using BulkCrapUninstaller.Functions.Ratings;
 using BulkCrapUninstaller.Properties;
 using Klocman.Extensions;
 using Klocman.Forms.Tools;
@@ -134,14 +133,14 @@ namespace BulkCrapUninstaller
             }
 
             // Initializes the settings object (unless it has been accessed before, which it shouldnt have)
-            if (Settings.Default.MiscUserId == 0)
-                Settings.Default.MiscUserId = GetUniqueUserId();
+            /*if (Settings.Default.MiscUserId == 0)*/
+                /*Settings.Default.MiscUserId = GetUniqueUserId();*/
 
             if (IsAfterUpgrade)
                 ClearCaches(false);
         }
 
-        private static ulong GetUniqueUserId()
+        /*private static ulong GetUniqueUserId()
         {
             // Get an ID that is unlikely to be duplicate but that should always return the same on current pc
             var windowsIdentity = WindowsIdentity.GetCurrent();
@@ -159,8 +158,8 @@ namespace BulkCrapUninstaller
             }
 
             var idStr = windowsIdentity.User?.Value + string.Join("", windowsIdentity.Claims.Select(x => x.Value)) + networkIdentity;
-            return UninstallerRatingManager.Utils.StableHash(idStr);
-        }
+            
+        }*/
 
         private static void DeleteConfigFile()
         {

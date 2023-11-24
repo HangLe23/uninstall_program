@@ -78,9 +78,6 @@
 		<Compile Update="Controls\FileTargeter.cs">
 			<SubType>UserControl</SubType>
 		</Compile>
-		<Compile Update="Controls\ListLegend.cs">
-			<SubType>UserControl</SubType>
-		</Compile>
 		<Compile Update="Controls\Settings\CacheSettings.cs">
 			<SubType>UserControl</SubType>
 		</Compile>
@@ -96,7 +93,6 @@
 		<Compile Update="Controls\UninstallConfirmation.cs">
 			<SubType>UserControl</SubType>
 		</Compile>
-		<Compile Update="Functions\Ratings\RatingRenderer.cs" />
 		<Compile Update="Functions\Tracking\UsageTracker.cs" />
 		<Compile Update="Controls\Settings\PropertiesSidebar.cs">
 			<SubType>UserControl</SubType>
@@ -116,10 +112,6 @@
 			<AutoGen>True</AutoGen>
 			<DependentUpon>Settings.settings</DependentUpon>
 		</Compile>
-		<Content Include="..\..\NOTICE">
-			<Link>NOTICE</Link>
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>
 		<None Update="Properties\Settings.settings">
 			<Generator>SettingsSingleFileGenerator</Generator>
 			<LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -130,10 +122,6 @@
 		<None Include="..\Licence.licenseheader">
 			<Link>Licence.licenseheader</Link>
 		</None>
-		<Content Include="..\..\PrivacyPolicy.txt">
-			<Link>PrivacyPolicy.txt</Link>
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>
 		<Content Include="..\es.exe">
 			<Link>es.exe</Link>
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -152,14 +140,6 @@
 		<ProjectReference Include="..\UninstallTools\UninstallTools.csproj" />
 	</ItemGroup>
 	<ItemGroup>
-		<Content Include="..\..\Licence.txt">
-			<Link>Licence.txt</Link>
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>
-		<Content Include="..\..\doc\BCU_manual.html">
-			<Link>BCU_manual.html</Link>
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
 		<Content Include="logo.ico" />
 	</ItemGroup>
 	<ItemGroup>

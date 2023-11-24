@@ -30,47 +30,19 @@ namespace BulkCrapUninstaller.Forms
             uninstallerObjectListView = new ObjectListView();
             olvColumnDisplayName = new OLVColumn();
             olvColumnPublisher = new OLVColumn();
-            olvColumnRating = new OLVColumn();
-            olvColumnDisplayVersion = new OLVColumn();
             olvColumnInstallDate = new OLVColumn();
             olvColumnSize = new OLVColumn();
-            olvColumnStartup = new OLVColumn();
-            olvColumnIs64 = new OLVColumn();
-            olvColumnUninstallString = new OLVColumn();
-            olvColumnAbout = new OLVColumn();
+            olvColumnDisplayVersion = new OLVColumn();
             olvColumnInstallSource = new OLVColumn();
             olvColumnInstallLocation = new OLVColumn();
-            olvColumnUninstallerKind = new OLVColumn();
-            olvColumnSystemComponent = new OLVColumn();
-            olvColumnProtected = new OLVColumn();
-            olvColumnRegistryKeyName = new OLVColumn();
-            olvColumnGuid = new OLVColumn();
-            olvColumnQuietUninstallString = new OLVColumn();
             treeMap1 = new SimpleTreeMap.TreeMap();
             toolStrip = new ToolStrip();
-            toolStripButton1 = new ToolStripButton();
-            toolStripSeparator22 = new ToolStripSeparator();
-            toolStripButtonSelAll = new ToolStripButton();
-            toolStripButtonSelNone = new ToolStripButton();
-            toolStripButtonSelInv = new ToolStripButton();
-            toolStripSeparator23 = new ToolStripSeparator();
-            toolStripButtonTarget = new ToolStripButton();
-            toolStripSeparator21 = new ToolStripSeparator();
-            toolStripButtonUninstall = new ToolStripButton();
-            toolStripButton2 = new ToolStripButton();
-            toolStripButtonModify = new ToolStripButton();
-            toolStripSeparator4 = new ToolStripSeparator();
-            toolStripButtonProperties = new ToolStripButton();
-            toolStripSeparator24 = new ToolStripSeparator();
-            toolStripButton7 = new ToolStripButton();
-            toolStripButton8 = new ToolStripButton();
             statusStrip1 = new StatusStrip();
             toolStripLabelStatus = new ToolStripStatusLabel();
             toolStripLabelSize = new ToolStripStatusLabel();
             toolStripLabelTotal = new ToolStripStatusLabel();
             settingsSidebarPanel = new Panel();
             propertiesSidebar = new PropertiesSidebar();
-            label1 = new Label();
             groupBox1 = new GroupBox();
             buttonAdvFiltering = new Button();
             filterEditor1 = new UninstallTools.Controls.FilterEditor();
@@ -152,51 +124,6 @@ namespace BulkCrapUninstaller.Forms
             viewWindowsStoreAppsToolStripMenuItem = new ToolStripMenuItem();
             toolStripSeparator28 = new ToolStripSeparator();
             searchToolStripMenuItem = new ToolStripMenuItem();
-            basicOperationsToolStripMenuItem = new ToolStripMenuItem();
-            uninstallToolStripMenuItem = new ToolStripMenuItem();
-            quietUninstallToolStripMenuItem = new ToolStripMenuItem();
-            modifyToolStripMenuItem = new ToolStripMenuItem();
-            toolStripSeparator2 = new ToolStripSeparator();
-            toolStripMenuItem8 = new ToolStripMenuItem();
-            advancedClipCopyToolStripMenuItem = new ToolStripMenuItem();
-            toolStripSeparator11 = new ToolStripSeparator();
-            copyFullInformationToolStripMenuItem = new ToolStripMenuItem();
-            toolStripMenuItem10 = new ToolStripMenuItem();
-            toolStripMenuItem11 = new ToolStripMenuItem();
-            toolStripMenuItem12 = new ToolStripMenuItem();
-            toolStripMenuItem13 = new ToolStripMenuItem();
-            toolStripMenuItem1 = new ToolStripMenuItem();
-            toolStripMenuItem5 = new ToolStripMenuItem();
-            toolStripMenuItem6 = new ToolStripMenuItem();
-            toolStripMenuItem7 = new ToolStripMenuItem();
-            toolStripMenuItem14 = new ToolStripMenuItem();
-            onlineSearchToolStripMenuItem = new ToolStripMenuItem();
-            googleToolStripMenuItem = new ToolStripMenuItem();
-            alternativeToToolStripMenuItem = new ToolStripMenuItem();
-            slantcoToolStripMenuItem1 = new ToolStripMenuItem();
-            toolStripSeparator27 = new ToolStripSeparator();
-            toolStripMenuItem17 = new ToolStripMenuItem();
-            toolStripMenuItem18 = new ToolStripMenuItem();
-            toolStripMenuItem20 = new ToolStripMenuItem();
-            toolStripMenuItem19 = new ToolStripMenuItem();
-            rateToolStripMenuItem1 = new ToolStripMenuItem();
-            toolStripSeparator15 = new ToolStripSeparator();
-            propertiesToolStripMenuItem = new ToolStripMenuItem();
-            advancedOperationsToolStripMenuItem = new ToolStripMenuItem();
-            manualUninstallToolStripMenuItem = new ToolStripMenuItem();
-            msiUninstalltoolStripMenuItem = new ToolStripMenuItem();
-            toolStripMenuItem2 = new ToolStripMenuItem();
-            toolStripMenuItem3 = new ToolStripMenuItem();
-            toolStripMenuItem4 = new ToolStripMenuItem();
-            toolStripSeparator14 = new ToolStripSeparator();
-            renameToolStripMenuItem = new ToolStripMenuItem();
-            disableAutostartToolStripMenuItem = new ToolStripMenuItem();
-            deleteToolStripMenuItem = new ToolStripMenuItem();
-            toolStripSeparator5 = new ToolStripSeparator();
-            createBackupToolStripMenuItem = new ToolStripMenuItem();
-            openKeyInRegeditToolStripMenuItem = new ToolStripMenuItem();
-            toolStripSeparator32 = new ToolStripSeparator();
-            takeOwnershipToolStripMenuItem = new ToolStripMenuItem();
             toolsToolStripMenuItem = new ToolStripMenuItem();
             openStartupManagerToolStripMenuItem = new ToolStripMenuItem();
             toolStripSeparator25 = new ToolStripSeparator();
@@ -229,6 +156,7 @@ namespace BulkCrapUninstaller.Forms
             globalHotkeys1 = new Klocman.Subsystems.GlobalHotkeys();
             splashScreen1 = new Klocman.Forms.SplashScreen();
             usageTracker = new UsageTracker();
+            toolStripButtonUninstall = new ToolStripButton();
             ((ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -295,28 +223,15 @@ namespace BulkCrapUninstaller.Forms
             // 
             uninstallerObjectListView.AllColumns.Add(olvColumnDisplayName);
             uninstallerObjectListView.AllColumns.Add(olvColumnPublisher);
-            uninstallerObjectListView.AllColumns.Add(olvColumnRating);
-            uninstallerObjectListView.AllColumns.Add(olvColumnDisplayVersion);
             uninstallerObjectListView.AllColumns.Add(olvColumnInstallDate);
             uninstallerObjectListView.AllColumns.Add(olvColumnSize);
-            uninstallerObjectListView.AllColumns.Add(olvColumnStartup);
-            uninstallerObjectListView.AllColumns.Add(olvColumnIs64);
-            uninstallerObjectListView.AllColumns.Add(olvColumnUninstallString);
-            uninstallerObjectListView.AllColumns.Add(olvColumnAbout);
-            uninstallerObjectListView.AllColumns.Add(olvColumnInstallSource);
-            uninstallerObjectListView.AllColumns.Add(olvColumnInstallLocation);
-            uninstallerObjectListView.AllColumns.Add(olvColumnUninstallerKind);
-            uninstallerObjectListView.AllColumns.Add(olvColumnSystemComponent);
-            uninstallerObjectListView.AllColumns.Add(olvColumnProtected);
-            uninstallerObjectListView.AllColumns.Add(olvColumnRegistryKeyName);
-            uninstallerObjectListView.AllColumns.Add(olvColumnGuid);
-            uninstallerObjectListView.AllColumns.Add(olvColumnQuietUninstallString);
+            uninstallerObjectListView.AllColumns.Add(olvColumnDisplayVersion);
             uninstallerObjectListView.AllowColumnReorder = true;
             uninstallerObjectListView.BorderStyle = BorderStyle.None;
             uninstallerObjectListView.CellEditActivation = ObjectListView.CellEditActivateMode.DoubleClick;
             uninstallerObjectListView.CellEditUseWholeCell = false;
-            uninstallerObjectListView.CheckBoxes = true;
-            uninstallerObjectListView.Columns.AddRange(new ColumnHeader[] { olvColumnDisplayName, olvColumnPublisher, olvColumnRating, olvColumnDisplayVersion, olvColumnInstallDate, olvColumnSize, olvColumnStartup, olvColumnIs64, olvColumnUninstallString, olvColumnAbout, olvColumnInstallSource, olvColumnInstallLocation, olvColumnUninstallerKind, olvColumnSystemComponent, olvColumnProtected, olvColumnRegistryKeyName, olvColumnGuid, olvColumnQuietUninstallString });
+            uninstallerObjectListView.CheckBoxes = false;
+            uninstallerObjectListView.Columns.AddRange(new ColumnHeader[] { olvColumnDisplayName, olvColumnPublisher, olvColumnInstallDate, olvColumnSize, olvColumnDisplayVersion});
             resources.ApplyResources(uninstallerObjectListView, "uninstallerObjectListView");
             uninstallerObjectListView.FullRowSelect = true;
             uninstallerObjectListView.GridLines = true;
@@ -348,19 +263,6 @@ namespace BulkCrapUninstaller.Forms
             // 
             resources.ApplyResources(olvColumnPublisher, "olvColumnPublisher");
             // 
-            // olvColumnRating
-            // 
-            olvColumnRating.IsEditable = false;
-            olvColumnRating.MaximumWidth = 160;
-            olvColumnRating.MinimumWidth = 80;
-            olvColumnRating.Searchable = false;
-            resources.ApplyResources(olvColumnRating, "olvColumnRating");
-            olvColumnRating.UseFiltering = false;
-            // 
-            // olvColumnDisplayVersion
-            // 
-            resources.ApplyResources(olvColumnDisplayVersion, "olvColumnDisplayVersion");
-            // 
             // olvColumnInstallDate
             // 
             olvColumnInstallDate.IsEditable = false;
@@ -371,25 +273,9 @@ namespace BulkCrapUninstaller.Forms
             olvColumnSize.Searchable = false;
             resources.ApplyResources(olvColumnSize, "olvColumnSize");
             // 
-            // olvColumnStartup
+            // olvColumnDisplayVersion
             // 
-            olvColumnStartup.AspectName = "";
-            resources.ApplyResources(olvColumnStartup, "olvColumnStartup");
-            // 
-            // olvColumnIs64
-            // 
-            olvColumnIs64.AspectName = "Is64Bit";
-            resources.ApplyResources(olvColumnIs64, "olvColumnIs64");
-            // 
-            // olvColumnUninstallString
-            // 
-            resources.ApplyResources(olvColumnUninstallString, "olvColumnUninstallString");
-            // 
-            // olvColumnAbout
-            // 
-            olvColumnAbout.Hyperlink = true;
-            olvColumnAbout.IsEditable = false;
-            resources.ApplyResources(olvColumnAbout, "olvColumnAbout");
+            resources.ApplyResources(olvColumnDisplayVersion, "olvColumnDisplayVersion");
             // 
             // olvColumnInstallSource
             // 
@@ -398,31 +284,6 @@ namespace BulkCrapUninstaller.Forms
             // olvColumnInstallLocation
             // 
             resources.ApplyResources(olvColumnInstallLocation, "olvColumnInstallLocation");
-            // 
-            // olvColumnUninstallerKind
-            // 
-            resources.ApplyResources(olvColumnUninstallerKind, "olvColumnUninstallerKind");
-            // 
-            // olvColumnSystemComponent
-            // 
-            resources.ApplyResources(olvColumnSystemComponent, "olvColumnSystemComponent");
-            // 
-            // olvColumnProtected
-            // 
-            olvColumnProtected.AspectName = "IsProtected";
-            resources.ApplyResources(olvColumnProtected, "olvColumnProtected");
-            // 
-            // olvColumnRegistryKeyName
-            // 
-            resources.ApplyResources(olvColumnRegistryKeyName, "olvColumnRegistryKeyName");
-            // 
-            // olvColumnGuid
-            // 
-            resources.ApplyResources(olvColumnGuid, "olvColumnGuid");
-            // 
-            // olvColumnQuietUninstallString
-            // 
-            resources.ApplyResources(olvColumnQuietUninstallString, "olvColumnQuietUninstallString");
             // 
             // treeMap1
             // 
@@ -436,110 +297,10 @@ namespace BulkCrapUninstaller.Forms
             toolStrip.GripStyle = ToolStripGripStyle.Hidden;
             toolStrip.ImageScalingSize = new System.Drawing.Size(22, 22);
             resources.ApplyResources(toolStrip, "toolStrip");
-            toolStrip.Items.AddRange(new ToolStripItem[] { toolStripButton1, toolStripSeparator22, toolStripButtonSelAll, toolStripButtonSelNone, toolStripButtonSelInv, toolStripSeparator23, toolStripButtonTarget, toolStripSeparator21, toolStripButtonUninstall, toolStripButton2, toolStripButtonModify, toolStripSeparator4, toolStripButtonProperties, toolStripSeparator24, toolStripButton7, toolStripButton8 });
+            toolStrip.Items.AddRange(new ToolStripItem[] { toolStripButtonUninstall });
             toolStrip.LayoutStyle = ToolStripLayoutStyle.HorizontalStackWithOverflow;
             toolStrip.Name = "toolStrip";
             toolStrip.TabStop = true;
-            // 
-            // toolStripButton1
-            // 
-            resources.ApplyResources(toolStripButton1, "toolStripButton1");
-            toolStripButton1.Name = "toolStripButton1";
-            toolStripButton1.Click += ReloadUninstallers;
-            // 
-            // toolStripSeparator22
-            // 
-            toolStripSeparator22.Name = "toolStripSeparator22";
-            resources.ApplyResources(toolStripSeparator22, "toolStripSeparator22");
-            // 
-            // toolStripButtonSelAll
-            // 
-            toolStripButtonSelAll.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            resources.ApplyResources(toolStripButtonSelAll, "toolStripButtonSelAll");
-            toolStripButtonSelAll.Name = "toolStripButtonSelAll";
-            // 
-            // toolStripButtonSelNone
-            // 
-            toolStripButtonSelNone.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            resources.ApplyResources(toolStripButtonSelNone, "toolStripButtonSelNone");
-            toolStripButtonSelNone.Name = "toolStripButtonSelNone";
-            // 
-            // toolStripButtonSelInv
-            // 
-            toolStripButtonSelInv.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            resources.ApplyResources(toolStripButtonSelInv, "toolStripButtonSelInv");
-            toolStripButtonSelInv.Name = "toolStripButtonSelInv";
-            // 
-            // toolStripSeparator23
-            // 
-            toolStripSeparator23.Name = "toolStripSeparator23";
-            resources.ApplyResources(toolStripSeparator23, "toolStripSeparator23");
-            // 
-            // toolStripButtonTarget
-            // 
-            toolStripButtonTarget.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            toolStripButtonTarget.Image = Properties.Resources.target;
-            resources.ApplyResources(toolStripButtonTarget, "toolStripButtonTarget");
-            toolStripButtonTarget.Name = "toolStripButtonTarget";
-            toolStripButtonTarget.Click += OpenTargetWindow;
-            // 
-            // toolStripSeparator21
-            // 
-            toolStripSeparator21.Name = "toolStripSeparator21";
-            resources.ApplyResources(toolStripSeparator21, "toolStripSeparator21");
-            // 
-            // toolStripButtonUninstall
-            // 
-            resources.ApplyResources(toolStripButtonUninstall, "toolStripButtonUninstall");
-            toolStripButtonUninstall.Name = "toolStripButtonUninstall";
-            toolStripButtonUninstall.Click += RunLoudUninstall;
-            // 
-            // toolStripButton2
-            // 
-            resources.ApplyResources(toolStripButton2, "toolStripButton2");
-            toolStripButton2.Name = "toolStripButton2";
-            toolStripButton2.Click += RunQuietUninstall;
-            // 
-            // toolStripButtonModify
-            // 
-            toolStripButtonModify.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            toolStripButtonModify.Image = Properties.Resources.edit_box;
-            resources.ApplyResources(toolStripButtonModify, "toolStripButtonModify");
-            toolStripButtonModify.Name = "toolStripButtonModify";
-            toolStripButtonModify.Click += modifyToolStripMenuItem_Click;
-            // 
-            // toolStripSeparator4
-            // 
-            toolStripSeparator4.Name = "toolStripSeparator4";
-            resources.ApplyResources(toolStripSeparator4, "toolStripSeparator4");
-            // 
-            // toolStripButtonProperties
-            // 
-            toolStripButtonProperties.Image = Properties.Resources.properties;
-            resources.ApplyResources(toolStripButtonProperties, "toolStripButtonProperties");
-            toolStripButtonProperties.Name = "toolStripButtonProperties";
-            toolStripButtonProperties.Click += OpenProperties;
-            // 
-            // toolStripSeparator24
-            // 
-            toolStripSeparator24.Name = "toolStripSeparator24";
-            resources.ApplyResources(toolStripSeparator24, "toolStripSeparator24");
-            // 
-            // toolStripButton7
-            // 
-            toolStripButton7.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            toolStripButton7.Image = Properties.Resources.settings;
-            resources.ApplyResources(toolStripButton7, "toolStripButton7");
-            toolStripButton7.Name = "toolStripButton7";
-            toolStripButton7.Click += settingsToolStripMenuItem_Click;
-            // 
-            // toolStripButton8
-            // 
-            toolStripButton8.DisplayStyle = ToolStripItemDisplayStyle.Image;
-            toolStripButton8.Image = Properties.Resources.information_circle;
-            resources.ApplyResources(toolStripButton8, "toolStripButton8");
-            toolStripButton8.Name = "toolStripButton8";
-            toolStripButton8.Click += openHelpToolStripMenuItem_Click;
             // 
             // statusStrip1
             // 
@@ -576,7 +337,6 @@ namespace BulkCrapUninstaller.Forms
             // 
             resources.ApplyResources(settingsSidebarPanel, "settingsSidebarPanel");
             settingsSidebarPanel.Controls.Add(propertiesSidebar);
-            settingsSidebarPanel.Controls.Add(label1);
             settingsSidebarPanel.Controls.Add(groupBox1);
             settingsSidebarPanel.Name = "settingsSidebarPanel";
             // 
@@ -591,11 +351,6 @@ namespace BulkCrapUninstaller.Forms
             propertiesSidebar.SysCompEnabled = true;
             propertiesSidebar.UpdatesEnabled = true;
             propertiesSidebar.WinFeaturesEnabled = true;
-            // 
-            // label1
-            // 
-            resources.ApplyResources(label1, "label1");
-            label1.Name = "label1";
             // 
             // groupBox1
             // 
@@ -854,7 +609,6 @@ namespace BulkCrapUninstaller.Forms
             rateToolStripMenuItem.Image = Properties.Resources.star;
             rateToolStripMenuItem.Name = "rateToolStripMenuItem";
             resources.ApplyResources(rateToolStripMenuItem, "rateToolStripMenuItem");
-            rateToolStripMenuItem.Click += rateToolStripMenuItem_Click;
             // 
             // toolStripSeparator7
             // 
@@ -879,7 +633,7 @@ namespace BulkCrapUninstaller.Forms
             // menuStrip
             // 
             menuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            menuStrip.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, viewToolStripMenuItem, filteringToolStripMenuItem, basicOperationsToolStripMenuItem, advancedOperationsToolStripMenuItem, toolsToolStripMenuItem, helpToolStripMenuItem, debugToolStripMenuItem });
+            menuStrip.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, viewToolStripMenuItem, filteringToolStripMenuItem, toolsToolStripMenuItem, helpToolStripMenuItem, debugToolStripMenuItem });
             resources.ApplyResources(menuStrip, "menuStrip");
             menuStrip.Name = "menuStrip";
             // 
@@ -1087,274 +841,6 @@ namespace BulkCrapUninstaller.Forms
             searchToolStripMenuItem.Name = "searchToolStripMenuItem";
             searchToolStripMenuItem.Click += searchToolStripMenuItem_Click;
             // 
-            // basicOperationsToolStripMenuItem
-            // 
-            basicOperationsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { uninstallToolStripMenuItem, quietUninstallToolStripMenuItem, modifyToolStripMenuItem, toolStripSeparator2, toolStripMenuItem8, toolStripMenuItem1, toolStripMenuItem14, onlineSearchToolStripMenuItem, rateToolStripMenuItem1, toolStripSeparator15, propertiesToolStripMenuItem });
-            resources.ApplyResources(basicOperationsToolStripMenuItem, "basicOperationsToolStripMenuItem");
-            basicOperationsToolStripMenuItem.Name = "basicOperationsToolStripMenuItem";
-            basicOperationsToolStripMenuItem.DropDownOpening += basicOperationsToolStripMenuItem_DropDownOpening;
-            // 
-            // uninstallToolStripMenuItem
-            // 
-            resources.ApplyResources(uninstallToolStripMenuItem, "uninstallToolStripMenuItem");
-            uninstallToolStripMenuItem.Name = "uninstallToolStripMenuItem";
-            uninstallToolStripMenuItem.Click += RunLoudUninstall;
-            // 
-            // quietUninstallToolStripMenuItem
-            // 
-            resources.ApplyResources(quietUninstallToolStripMenuItem, "quietUninstallToolStripMenuItem");
-            quietUninstallToolStripMenuItem.Name = "quietUninstallToolStripMenuItem";
-            quietUninstallToolStripMenuItem.Click += RunQuietUninstall;
-            // 
-            // modifyToolStripMenuItem
-            // 
-            modifyToolStripMenuItem.Image = Properties.Resources.edit_box;
-            modifyToolStripMenuItem.Name = "modifyToolStripMenuItem";
-            resources.ApplyResources(modifyToolStripMenuItem, "modifyToolStripMenuItem");
-            modifyToolStripMenuItem.Click += modifyToolStripMenuItem_Click;
-            // 
-            // toolStripSeparator2
-            // 
-            toolStripSeparator2.Name = "toolStripSeparator2";
-            resources.ApplyResources(toolStripSeparator2, "toolStripSeparator2");
-            // 
-            // toolStripMenuItem8
-            // 
-            toolStripMenuItem8.DropDownItems.AddRange(new ToolStripItem[] { advancedClipCopyToolStripMenuItem, toolStripSeparator11, copyFullInformationToolStripMenuItem, toolStripMenuItem10, toolStripMenuItem11, toolStripMenuItem12, toolStripMenuItem13 });
-            resources.ApplyResources(toolStripMenuItem8, "toolStripMenuItem8");
-            toolStripMenuItem8.Name = "toolStripMenuItem8";
-            // 
-            // advancedClipCopyToolStripMenuItem
-            // 
-            advancedClipCopyToolStripMenuItem.Name = "advancedClipCopyToolStripMenuItem";
-            resources.ApplyResources(advancedClipCopyToolStripMenuItem, "advancedClipCopyToolStripMenuItem");
-            advancedClipCopyToolStripMenuItem.Click += OpenAdvancedClipboardCopy;
-            // 
-            // toolStripSeparator11
-            // 
-            toolStripSeparator11.Name = "toolStripSeparator11";
-            resources.ApplyResources(toolStripSeparator11, "toolStripSeparator11");
-            // 
-            // copyFullInformationToolStripMenuItem
-            // 
-            copyFullInformationToolStripMenuItem.Name = "copyFullInformationToolStripMenuItem";
-            resources.ApplyResources(copyFullInformationToolStripMenuItem, "copyFullInformationToolStripMenuItem");
-            copyFullInformationToolStripMenuItem.Click += ClipboardCopyFullInformation;
-            // 
-            // toolStripMenuItem10
-            // 
-            toolStripMenuItem10.Name = "toolStripMenuItem10";
-            resources.ApplyResources(toolStripMenuItem10, "toolStripMenuItem10");
-            toolStripMenuItem10.Click += ClipboardCopyProgramName;
-            // 
-            // toolStripMenuItem11
-            // 
-            toolStripMenuItem11.Name = "toolStripMenuItem11";
-            resources.ApplyResources(toolStripMenuItem11, "toolStripMenuItem11");
-            toolStripMenuItem11.Click += ClipboardCopyGuids;
-            // 
-            // toolStripMenuItem12
-            // 
-            toolStripMenuItem12.Name = "toolStripMenuItem12";
-            resources.ApplyResources(toolStripMenuItem12, "toolStripMenuItem12");
-            toolStripMenuItem12.Click += ClipboardCopyRegistryPath;
-            // 
-            // toolStripMenuItem13
-            // 
-            toolStripMenuItem13.Name = "toolStripMenuItem13";
-            resources.ApplyResources(toolStripMenuItem13, "toolStripMenuItem13");
-            toolStripMenuItem13.Click += ClipboardCopyUninstallString;
-            // 
-            // toolStripMenuItem1
-            // 
-            toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem5, toolStripMenuItem6, toolStripMenuItem7 });
-            resources.ApplyResources(toolStripMenuItem1, "toolStripMenuItem1");
-            toolStripMenuItem1.Name = "toolStripMenuItem1";
-            // 
-            // toolStripMenuItem5
-            // 
-            toolStripMenuItem5.Name = "toolStripMenuItem5";
-            resources.ApplyResources(toolStripMenuItem5, "toolStripMenuItem5");
-            toolStripMenuItem5.Click += OpenInstallLocation;
-            // 
-            // toolStripMenuItem6
-            // 
-            toolStripMenuItem6.Name = "toolStripMenuItem6";
-            resources.ApplyResources(toolStripMenuItem6, "toolStripMenuItem6");
-            toolStripMenuItem6.Click += OpenUninstallerLocation;
-            // 
-            // toolStripMenuItem7
-            // 
-            toolStripMenuItem7.Name = "toolStripMenuItem7";
-            resources.ApplyResources(toolStripMenuItem7, "toolStripMenuItem7");
-            toolStripMenuItem7.Click += OpenInstallationSource;
-            // 
-            // toolStripMenuItem14
-            // 
-            toolStripMenuItem14.Name = "toolStripMenuItem14";
-            resources.ApplyResources(toolStripMenuItem14, "toolStripMenuItem14");
-            toolStripMenuItem14.Click += OpenAssociatedWebPage;
-            // 
-            // onlineSearchToolStripMenuItem
-            // 
-            onlineSearchToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { googleToolStripMenuItem, alternativeToToolStripMenuItem, slantcoToolStripMenuItem1, toolStripSeparator27, toolStripMenuItem17, toolStripMenuItem18, toolStripMenuItem20, toolStripMenuItem19 });
-            resources.ApplyResources(onlineSearchToolStripMenuItem, "onlineSearchToolStripMenuItem");
-            onlineSearchToolStripMenuItem.Name = "onlineSearchToolStripMenuItem";
-            // 
-            // googleToolStripMenuItem
-            // 
-            googleToolStripMenuItem.Name = "googleToolStripMenuItem";
-            resources.ApplyResources(googleToolStripMenuItem, "googleToolStripMenuItem");
-            googleToolStripMenuItem.Click += googleToolStripMenuItem_Click;
-            // 
-            // alternativeToToolStripMenuItem
-            // 
-            alternativeToToolStripMenuItem.Name = "alternativeToToolStripMenuItem";
-            resources.ApplyResources(alternativeToToolStripMenuItem, "alternativeToToolStripMenuItem");
-            alternativeToToolStripMenuItem.Click += alternativeToToolStripMenuItem_Click;
-            // 
-            // slantcoToolStripMenuItem1
-            // 
-            slantcoToolStripMenuItem1.Name = "slantcoToolStripMenuItem1";
-            resources.ApplyResources(slantcoToolStripMenuItem1, "slantcoToolStripMenuItem1");
-            slantcoToolStripMenuItem1.Click += slantcoToolStripMenuItem_Click;
-            // 
-            // toolStripSeparator27
-            // 
-            toolStripSeparator27.Name = "toolStripSeparator27";
-            resources.ApplyResources(toolStripSeparator27, "toolStripSeparator27");
-            // 
-            // toolStripMenuItem17
-            // 
-            toolStripMenuItem17.Name = "toolStripMenuItem17";
-            resources.ApplyResources(toolStripMenuItem17, "toolStripMenuItem17");
-            toolStripMenuItem17.Click += fossHubcomToolStripMenuItem_Click;
-            // 
-            // toolStripMenuItem18
-            // 
-            toolStripMenuItem18.Name = "toolStripMenuItem18";
-            resources.ApplyResources(toolStripMenuItem18, "toolStripMenuItem18");
-            toolStripMenuItem18.Click += sourceForgecomToolStripMenuItem_Click;
-            // 
-            // toolStripMenuItem20
-            // 
-            toolStripMenuItem20.Name = "toolStripMenuItem20";
-            resources.ApplyResources(toolStripMenuItem20, "toolStripMenuItem20");
-            toolStripMenuItem20.Click += gitHubcomToolStripMenuItem_Click;
-            // 
-            // toolStripMenuItem19
-            // 
-            toolStripMenuItem19.Name = "toolStripMenuItem19";
-            resources.ApplyResources(toolStripMenuItem19, "toolStripMenuItem19");
-            toolStripMenuItem19.Click += gitHubcomToolStripMenuItem_Click;
-            // 
-            // rateToolStripMenuItem1
-            // 
-            rateToolStripMenuItem1.Image = Properties.Resources.star;
-            rateToolStripMenuItem1.Name = "rateToolStripMenuItem1";
-            resources.ApplyResources(rateToolStripMenuItem1, "rateToolStripMenuItem1");
-            rateToolStripMenuItem1.Click += rateToolStripMenuItem_Click;
-            // 
-            // toolStripSeparator15
-            // 
-            toolStripSeparator15.Name = "toolStripSeparator15";
-            resources.ApplyResources(toolStripSeparator15, "toolStripSeparator15");
-            // 
-            // propertiesToolStripMenuItem
-            // 
-            propertiesToolStripMenuItem.Image = Properties.Resources.properties;
-            propertiesToolStripMenuItem.Name = "propertiesToolStripMenuItem";
-            resources.ApplyResources(propertiesToolStripMenuItem, "propertiesToolStripMenuItem");
-            propertiesToolStripMenuItem.Click += OpenProperties;
-            // 
-            // advancedOperationsToolStripMenuItem
-            // 
-            advancedOperationsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { manualUninstallToolStripMenuItem, msiUninstalltoolStripMenuItem, toolStripSeparator14, renameToolStripMenuItem, disableAutostartToolStripMenuItem, deleteToolStripMenuItem, toolStripSeparator5, createBackupToolStripMenuItem, openKeyInRegeditToolStripMenuItem, toolStripSeparator32, takeOwnershipToolStripMenuItem });
-            resources.ApplyResources(advancedOperationsToolStripMenuItem, "advancedOperationsToolStripMenuItem");
-            advancedOperationsToolStripMenuItem.Name = "advancedOperationsToolStripMenuItem";
-            advancedOperationsToolStripMenuItem.DropDownOpening += advancedOperationsToolStripMenuItem_DropDownOpening;
-            // 
-            // manualUninstallToolStripMenuItem
-            // 
-            manualUninstallToolStripMenuItem.Image = Properties.Resources.list;
-            manualUninstallToolStripMenuItem.Name = "manualUninstallToolStripMenuItem";
-            resources.ApplyResources(manualUninstallToolStripMenuItem, "manualUninstallToolStripMenuItem");
-            manualUninstallToolStripMenuItem.Click += RunAdvancedUninstall;
-            // 
-            // msiUninstalltoolStripMenuItem
-            // 
-            msiUninstalltoolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem2, toolStripMenuItem3, toolStripMenuItem4 });
-            msiUninstalltoolStripMenuItem.Name = "msiUninstalltoolStripMenuItem";
-            resources.ApplyResources(msiUninstalltoolStripMenuItem, "msiUninstalltoolStripMenuItem");
-            // 
-            // toolStripMenuItem2
-            // 
-            toolStripMenuItem2.Name = "toolStripMenuItem2";
-            resources.ApplyResources(toolStripMenuItem2, "toolStripMenuItem2");
-            toolStripMenuItem2.Click += msiInstallContextMenuStripItem_Click;
-            // 
-            // toolStripMenuItem3
-            // 
-            toolStripMenuItem3.Name = "toolStripMenuItem3";
-            resources.ApplyResources(toolStripMenuItem3, "toolStripMenuItem3");
-            toolStripMenuItem3.Click += msiUninstallContextMenuStripItem_Click;
-            // 
-            // toolStripMenuItem4
-            // 
-            toolStripMenuItem4.Name = "toolStripMenuItem4";
-            resources.ApplyResources(toolStripMenuItem4, "toolStripMenuItem4");
-            toolStripMenuItem4.Click += msiQuietUninstallContextMenuStripItem_Click;
-            // 
-            // toolStripSeparator14
-            // 
-            toolStripSeparator14.Name = "toolStripSeparator14";
-            resources.ApplyResources(toolStripSeparator14, "toolStripSeparator14");
-            // 
-            // renameToolStripMenuItem
-            // 
-            renameToolStripMenuItem.Name = "renameToolStripMenuItem";
-            resources.ApplyResources(renameToolStripMenuItem, "renameToolStripMenuItem");
-            renameToolStripMenuItem.Click += RenameEntries;
-            // 
-            // disableAutostartToolStripMenuItem
-            // 
-            disableAutostartToolStripMenuItem.Name = "disableAutostartToolStripMenuItem";
-            resources.ApplyResources(disableAutostartToolStripMenuItem, "disableAutostartToolStripMenuItem");
-            disableAutostartToolStripMenuItem.Click += disableAutostartToolStripMenuItem_Click;
-            // 
-            // deleteToolStripMenuItem
-            // 
-            resources.ApplyResources(deleteToolStripMenuItem, "deleteToolStripMenuItem");
-            deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            deleteToolStripMenuItem.Click += DeleteRegistryEntries;
-            // 
-            // toolStripSeparator5
-            // 
-            toolStripSeparator5.Name = "toolStripSeparator5";
-            resources.ApplyResources(toolStripSeparator5, "toolStripSeparator5");
-            // 
-            // createBackupToolStripMenuItem
-            // 
-            createBackupToolStripMenuItem.Name = "createBackupToolStripMenuItem";
-            resources.ApplyResources(createBackupToolStripMenuItem, "createBackupToolStripMenuItem");
-            createBackupToolStripMenuItem.Click += CreateRegistryBackup;
-            // 
-            // openKeyInRegeditToolStripMenuItem
-            // 
-            openKeyInRegeditToolStripMenuItem.Name = "openKeyInRegeditToolStripMenuItem";
-            resources.ApplyResources(openKeyInRegeditToolStripMenuItem, "openKeyInRegeditToolStripMenuItem");
-            openKeyInRegeditToolStripMenuItem.Click += OpenInRegedit;
-            // 
-            // toolStripSeparator32
-            // 
-            toolStripSeparator32.Name = "toolStripSeparator32";
-            resources.ApplyResources(toolStripSeparator32, "toolStripSeparator32");
-            // 
-            // takeOwnershipToolStripMenuItem
-            // 
-            takeOwnershipToolStripMenuItem.Name = "takeOwnershipToolStripMenuItem";
-            resources.ApplyResources(takeOwnershipToolStripMenuItem, "takeOwnershipToolStripMenuItem");
-            // 
             // toolsToolStripMenuItem
             // 
             toolsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { openStartupManagerToolStripMenuItem, toolStripSeparator25, cleanUpProgramFilesToolStripMenuItem, targetMenuItem, uninstallFromDirectoryToolStripMenuItem, toolStripSeparator13, troubleshootUninstallProblemsToolStripMenuItem, startDiskCleanupToolStripMenuItem, tryToInstallNETV35ToolStripMenuItem, createRestorePointToolStripMenuItem, toolStripSeparator29, openProgramsAndFeaturesToolStripMenuItem, openSystemRestoreToolStripMenuItem, toolStripSeparator19, settingsToolStripMenuItem });
@@ -1467,7 +953,6 @@ namespace BulkCrapUninstaller.Forms
             // 
             startSetupWizardToolStripMenuItem.Name = "startSetupWizardToolStripMenuItem";
             resources.ApplyResources(startSetupWizardToolStripMenuItem, "startSetupWizardToolStripMenuItem");
-            startSetupWizardToolStripMenuItem.Click += OnClickStartSetupWizard;
             // 
             // toolStripSeparator16
             // 
@@ -1482,9 +967,9 @@ namespace BulkCrapUninstaller.Forms
             // 
             // submitFeedbackToolStripMenuItem
             // 
-            resources.ApplyResources(submitFeedbackToolStripMenuItem, "submitFeedbackToolStripMenuItem");
+            /*resources.ApplyResources(submitFeedbackToolStripMenuItem, "submitFeedbackToolStripMenuItem");
             submitFeedbackToolStripMenuItem.Name = "submitFeedbackToolStripMenuItem";
-            submitFeedbackToolStripMenuItem.Click += OpenSubmitFeedbackWindow;
+            //submitFeedbackToolStripMenuItem.Click += OpenSubmitFeedbackWindow;*/
             // 
             // toolStripSeparator18
             // 
@@ -1542,6 +1027,12 @@ namespace BulkCrapUninstaller.Forms
             // usageTracker
             // 
             usageTracker.ContainerControl = this;
+            // 
+            // toolStripButtonUninstall
+            // 
+            resources.ApplyResources(toolStripButtonUninstall, "toolStripButtonUninstall");
+            toolStripButtonUninstall.Name = "toolStripButtonUninstall";
+            toolStripButtonUninstall.Click += RunLoudUninstall;
             // 
             // MainWindow
             // 
@@ -1615,20 +1106,12 @@ namespace BulkCrapUninstaller.Forms
         private ToolStripMenuItem viewToolStripMenuItem;
         private ToolStripMenuItem displayToolbarToolStripMenuItem;
         private ToolStripMenuItem displaySettingsToolStripMenuItem;
-        private ToolStripMenuItem basicOperationsToolStripMenuItem;
-        private ToolStripMenuItem quietUninstallToolStripMenuItem;
-        private ToolStripMenuItem propertiesToolStripMenuItem;
-        private ToolStripSeparator toolStripSeparator2;
         private ToolStripMenuItem helpToolStripMenuItem;
         private ToolStripMenuItem openHelpToolStripMenuItem;
         private ToolStripMenuItem checkForUpdatesToolStripMenuItem;
         private ToolStripMenuItem resetSettingsToolStripMenuItem;
         private ToolStripMenuItem aboutToolStripMenuItem;
         private ToolStrip toolStrip;
-        private ToolStripButton toolStripButton1;
-        private ToolStripButton toolStripButtonUninstall;
-        private ToolStripButton toolStripButtonProperties;
-        private Label label1;
         private SaveFileDialog createBackupFileDialog;
         private ToolStripMenuItem quietUninstallContextMenuStripItem;
         private ToolStripSeparator toolStripSeparator8;
@@ -1648,40 +1131,15 @@ namespace BulkCrapUninstaller.Forms
         private ToolStripMenuItem sourceLocationOpenInExplorerContextMenuStripItem;
         private ToolStripMenuItem openWebPageContextMenuStripItem;
         private ToolStripSeparator toolStripSeparator7;
-        private ToolStripButton toolStripButton2;
         private ToolStripMenuItem uninstallUsingMsiExecContextMenuStripItem;
         private ToolStripMenuItem msiInstallContextMenuStripItem;
         private ToolStripMenuItem msiUninstallContextMenuStripItem;
         private ToolStripMenuItem msiQuietUninstallContextMenuStripItem;
-        private ToolStripMenuItem uninstallToolStripMenuItem;
         private ToolStripMenuItem useSystemThemeToolStripMenuItem;
         private ToolStripMenuItem submitFeedbackToolStripMenuItem;
         private ToolStripMenuItem loadUninstallerListToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator10;
-        private ToolStripMenuItem toolStripMenuItem8;
-        private ToolStripMenuItem copyFullInformationToolStripMenuItem;
-        private ToolStripSeparator toolStripSeparator11;
-        private ToolStripMenuItem toolStripMenuItem10;
-        private ToolStripMenuItem toolStripMenuItem11;
-        private ToolStripMenuItem toolStripMenuItem12;
-        private ToolStripMenuItem toolStripMenuItem13;
-        private ToolStripMenuItem toolStripMenuItem1;
-        private ToolStripMenuItem toolStripMenuItem5;
-        private ToolStripMenuItem toolStripMenuItem6;
-        private ToolStripMenuItem toolStripMenuItem7;
-        private ToolStripMenuItem toolStripMenuItem14;
-        private ToolStripMenuItem advancedOperationsToolStripMenuItem;
-        private ToolStripMenuItem deleteToolStripMenuItem;
-        private ToolStripMenuItem renameToolStripMenuItem;
-        private ToolStripMenuItem msiUninstalltoolStripMenuItem;
-        private ToolStripMenuItem toolStripMenuItem2;
-        private ToolStripMenuItem toolStripMenuItem3;
-        private ToolStripMenuItem toolStripMenuItem4;
-        private ToolStripSeparator toolStripSeparator5;
-        private ToolStripMenuItem openKeyInRegeditToolStripMenuItem;
-        private ToolStripMenuItem createBackupToolStripMenuItem;
         private ToolStripMenuItem lookUpOnlineToolStripMenuItem;
-        private ToolStripMenuItem onlineSearchToolStripMenuItem;
         private PropertiesSidebar propertiesSidebar;
         private ToolStripMenuItem debugToolStripMenuItem;
         private ToolStripMenuItem uninstallBCUninstallToolstripMenuItem;
@@ -1695,13 +1153,9 @@ namespace BulkCrapUninstaller.Forms
         private ToolStripMenuItem openProgramsAndFeaturesToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator13;
         private ToolStripMenuItem manualUninstallToolStripMenuItem1;
-        private ToolStripMenuItem manualUninstallToolStripMenuItem;
-        private ToolStripSeparator toolStripSeparator14;
-        private ToolStripSeparator toolStripSeparator15;
         private ToolStripSeparator toolStripSeparator12;
         private ToolStripSeparator toolStripSeparator16;
         private ToolStripSeparator toolStripSeparator17;
-        private ToolStripSeparator toolStripSeparator4;
         private ToolStripMenuItem startSetupWizardToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator18;
         private ToolStripSeparator toolStripSeparator19;
@@ -1712,33 +1166,18 @@ namespace BulkCrapUninstaller.Forms
         internal Klocman.Subsystems.GlobalHotkeys globalHotkeys1;
         private ToolStripMenuItem showColorLegendToolStripMenuItem;
         private GroupBox groupBox1;
-        private ToolStripSeparator toolStripSeparator21;
-        private ToolStripButton toolStripButtonSelAll;
-        private ToolStripButton toolStripButtonSelInv;
-        private ToolStripButton toolStripButtonSelNone;
-        private ToolStripSeparator toolStripSeparator22;
         private ToolStripMenuItem openStartupManagerToolStripMenuItem;
-        internal OLVColumn olvColumnStartup;
+
         private Panel listViewPanel;
-        private ToolStripMenuItem disableAutostartToolStripMenuItem;
         internal OLVColumn olvColumnRating;
         private ToolStripMenuItem rateToolStripMenuItem;
-        private ToolStripMenuItem rateToolStripMenuItem1;
-        private ToolStripButton toolStripButtonTarget;
-        private ToolStripSeparator toolStripSeparator23;
         private ToolStripMenuItem viewWindowsStoreAppsToolStripMenuItem;
         internal UninstallTools.Controls.FilterEditor filterEditor1;
         private Button buttonAdvFiltering;
-        private ToolStripSeparator toolStripSeparator24;
-        private ToolStripButton toolStripButton7;
-        private ToolStripButton toolStripButton8;
         private AdvancedFilters advancedFilters1;
-        private ToolStripMenuItem advancedClipCopyToolStripMenuItem;
         private ToolStripMenuItem toolStripMenuItem9;
         private ToolStripMenuItem viewWindowsFeaturesToolStripMenuItem;
         private ToolStripMenuItem uninstallFromDirectoryToolStripMenuItem;
-        private ToolStripMenuItem googleToolStripMenuItem;
-        private ToolStripMenuItem alternativeToToolStripMenuItem;
         private ToolStripMenuItem toolStripMenuItem15;
         private ToolStripMenuItem toolStripMenuItem16;
         private ToolStripMenuItem openSystemRestoreToolStripMenuItem;
@@ -1752,14 +1191,7 @@ namespace BulkCrapUninstaller.Forms
         private ToolStripMenuItem fossHubcomToolStripMenuItem;
         private ToolStripMenuItem sourceForgecomToolStripMenuItem;
         private ToolStripMenuItem fileHippocomToolStripMenuItem;
-        private ToolStripSeparator toolStripSeparator27;
-        private ToolStripMenuItem toolStripMenuItem17;
-        private ToolStripMenuItem toolStripMenuItem18;
-        private ToolStripMenuItem toolStripMenuItem19;
         private ToolStripMenuItem gitHubcomToolStripMenuItem;
-        private ToolStripMenuItem toolStripMenuItem20;
-        private ToolStripButton toolStripButtonModify;
-        private ToolStripMenuItem modifyToolStripMenuItem;
         private ToolStripMenuItem excludeToolStripMenuItem;
         private ToolStripMenuItem includeToolStripMenuItem;
         private ToolStripSeparator toolStripSeparatorFiltering;
@@ -1784,11 +1216,9 @@ namespace BulkCrapUninstaller.Forms
         private ToolStripMenuItem everythingToolStripMenuItem;
         private ToolStripMenuItem onlyWebBrowsersToolStripMenuItem;
         private ToolStripMenuItem viewTweaksToolStripMenuItem;
-        private ToolStripSeparator toolStripSeparator32;
-        private ToolStripMenuItem takeOwnershipToolStripMenuItem;
         private ToolStripMenuItem slantcoToolStripMenuItem;
-        private ToolStripMenuItem slantcoToolStripMenuItem1;
         private ToolStripMenuItem createRestorePointToolStripMenuItem;
+        private ToolStripButton toolStripButtonUninstall;
     }
 }
 

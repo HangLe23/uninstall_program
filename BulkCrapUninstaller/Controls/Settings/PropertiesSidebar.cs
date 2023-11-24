@@ -26,8 +26,8 @@ namespace BulkCrapUninstaller.Controls
 
             if (DesignMode) return;
 
-            _settings.BindControl(checkBoxViewCheckboxes, x => x.UninstallerListUseCheckboxes, this);
-            _settings.BindControl(checkBoxViewGroups, x => x.UninstallerListUseGroups, this);
+            //_settings.BindControl(checkBoxViewCheckboxes, x => x.UninstallerListUseCheckboxes, this);
+            // _settings.BindControl(checkBoxViewGroups, x => x.UninstallerListUseGroups, this);
 
             _settings.BindControl(checkBoxListHideMicrosoft, x => x.FilterHideMicrosoft, this);
             _settings.BindControl(checkBoxShowUpdates, x => x.FilterShowUpdates, this);
@@ -36,11 +36,7 @@ namespace BulkCrapUninstaller.Controls
             _settings.BindControl(checkBoxShowStoreApps, x => x.FilterShowStoreApps, this);
             _settings.BindControl(checkBoxWinFeature, x => x.FilterShowWinFeatures, this);
             _settings.BindControl(checkBoxTweaks, x => x.FilterShowTweaks, this);
-
-            _settings.BindControl(checkBoxInvalidTest, x => x.AdvancedTestInvalid, this);
-            _settings.BindControl(checkBoxCertTest, x => x.AdvancedTestCertificates, this);
             _settings.BindControl(checkBoxOrphans, x => x.AdvancedDisplayOrphans, this);
-            _settings.BindControl(checkBoxHighlightSpecial, x => x.AdvancedHighlightSpecial, this);
 
             _settings.SendUpdates(this);
             Disposed += (x, y) => _settings.RemoveHandlers(this);
@@ -95,13 +91,7 @@ namespace BulkCrapUninstaller.Controls
         }
 
         [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
-        public bool InvalidEnabled
-        {
-            get { return checkBoxInvalidTest.Enabled; }
-            set { checkBoxInvalidTest.Enabled = value; checkBoxInvalidTest.Visible = value; }
-        }
 
-        [Browsable(false), EditorBrowsable(EditorBrowsableState.Never)]
         public bool WinFeaturesEnabled
         {
             get { return checkBoxWinFeature.Enabled; }

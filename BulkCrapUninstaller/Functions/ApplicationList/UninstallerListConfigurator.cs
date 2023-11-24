@@ -1,4 +1,4 @@
-/*
+﻿/*
     Copyright (c) 2017 Marcin Szeniak (https://github.com/Klocman/)
     Apache License Version 2.0
 */
@@ -8,7 +8,6 @@ using System.Collections.Generic;
 using System.Windows.Forms;
 using BrightIdeasSoftware;
 using BulkCrapUninstaller.Forms;
-using BulkCrapUninstaller.Functions.Ratings;
 using BulkCrapUninstaller.Properties;
 using Klocman.Binding.Settings;
 using Klocman.Extensions;
@@ -47,20 +46,19 @@ namespace BulkCrapUninstaller.Functions.ApplicationList
 
             SetupListView();
 
-            RatingManagerWrapper = new RatingManagerWrapper();
+           /* RatingManagerWrapper = new RatingManagerWrapper();
             RatingManagerWrapper.InitializeRatingColumn(_reference.olvColumnRating, _reference.uninstallerObjectListView);
             _reference.FormClosed += (x, y) => { RatingManagerWrapper.ProcessGatheredRatings(); };
 
-            _settings.Subscribe((sender, args) => RatingManagerWrapper.InitializeRatings(), x => x.MiscUserRatings, this);
+            _settings.Subscribe((sender, args) => RatingManagerWrapper.InitializeRatings(), x => x.MiscUserRatings, this);*/
         }
 
         public ITestEntry FilteringOverride { get; set; }
 
-        public RatingManagerWrapper RatingManagerWrapper { get; }
 
         public void Dispose()
         {
-            RatingManagerWrapper.Dispose();
+            
             _updateThrottleTimer.Dispose();
         }
 
@@ -162,11 +160,11 @@ namespace BulkCrapUninstaller.Functions.ApplicationList
             _reference.olvColumnDisplayName.AspectName = RegistryFactory.RegistryNameDisplayName;
             _reference.olvColumnDisplayName.GroupKeyGetter = ListViewDelegates.GetFirstCharGroupKeyGetter;
 
-            _reference.olvColumnStartup.AspectGetter = x =>
+            /*_reference.olvColumnDisplayName.AspectGetter = x =>
             {
                 var obj = x as ApplicationUninstallerEntry;
                 return (obj?.HasStartups).ToYesNo();
-            };
+            };*/
 
             _reference.olvColumnPublisher.AspectName = RegistryFactory.RegistryNamePublisher;
             _reference.olvColumnPublisher.GroupKeyGetter = ListViewDelegates.ColumnPublisherGroupKeyGetter;
@@ -174,18 +172,11 @@ namespace BulkCrapUninstaller.Functions.ApplicationList
             _reference.olvColumnDisplayVersion.AspectName = RegistryFactory.RegistryNameDisplayVersion;
             _reference.olvColumnDisplayVersion.GroupKeyGetter = ListViewDelegates.DisplayVersionGroupKeyGetter;
 
-            _reference.olvColumnUninstallString.AspectGetter = ListViewDelegates.ColumnUninstallStringGetter;
-            _reference.olvColumnUninstallString.GroupKeyGetter = ListViewDelegates.ColumnUninstallStringGroupKeyGetter;
-
-            _reference.olvColumnQuietUninstallString.AspectGetter = ListViewDelegates.ColumnQuietUninstallStringGetter;
-            _reference.olvColumnQuietUninstallString.GroupKeyGetter = ListViewDelegates.ColumnQuietUninstallStringGroupKeyGetter;
-
             _reference.olvColumnInstallDate.AspectGetter = x =>
             {
                 var obj = x as ApplicationUninstallerEntry;
                 return obj?.InstallDate.Date ?? DateTime.MinValue;
             };
-            //_reference.olvColumnInstallDate.AspectName = ApplicationUninstallerEntry.RegistryNameInstallDate;
             _reference.olvColumnInstallDate.AspectToStringConverter = x =>
             {
                 if (x is not DateTime time) return Localisable.Empty;
@@ -197,7 +188,7 @@ namespace BulkCrapUninstaller.Functions.ApplicationList
                 {
                     return Localisable.NotAvailable;
                 }
-            };
+            };/*
 
             _reference.olvColumnGuid.AspectGetter = ListViewDelegates.ColumnGuidAspectGetter;
             _reference.olvColumnGuid.GroupKeyGetter = ListViewDelegates.ColumnGuidGroupKeyGetter;
@@ -207,18 +198,18 @@ namespace BulkCrapUninstaller.Functions.ApplicationList
             _reference.olvColumnSystemComponent.GroupKeyToTitleConverter = ListViewDelegates.BoolToYesNoAspectConverter;
 
             _reference.olvColumnIs64.AspectGetter =
-                y => (y as ApplicationUninstallerEntry)?.Is64Bit.GetLocalisedName();
+                y => (y as ApplicationUninstallerEntry)?.Is64Bit.GetLocalisedName();*/
 
-            _reference.olvColumnProtected.AspectToStringConverter = ListViewDelegates.BoolToYesNoAspectConverter;
+            /*_reference.olvColumnProtected.AspectToStringConverter = ListViewDelegates.BoolToYesNoAspectConverter;
             _reference.olvColumnProtected.GroupKeyToTitleConverter = ListViewDelegates.BoolToYesNoAspectConverter;
-
+*/
             _reference.olvColumnInstallLocation.AspectName = RegistryFactory.RegistryNameInstallLocation;
             _reference.olvColumnInstallLocation.GroupKeyGetter = ListViewDelegates.ColumnInstallLocationGroupKeyGetter;
 
             _reference.olvColumnInstallSource.AspectName = RegistryFactory.RegistryNameInstallSource;
             _reference.olvColumnInstallSource.GroupKeyGetter = ListViewDelegates.ColumnInstallSourceGroupKeyGetter;
 
-            _reference.olvColumnRegistryKeyName.AspectName = "RegistryKeyName";
+            /*_reference.olvColumnRegistryKeyName.AspectName = "RegistryKeyName";
 
             _reference.olvColumnUninstallerKind.AspectGetter =
                 y => (y as ApplicationUninstallerEntry)?.UninstallerKind.GetLocalisedName();
@@ -229,7 +220,7 @@ namespace BulkCrapUninstaller.Functions.ApplicationList
                 var entry = x as ApplicationUninstallerEntry;
                 var aboutUri = entry?.GetAboutUri();
                 return aboutUri?.Host ?? Localisable.Empty;
-            };
+            };*/
 
             _reference.olvColumnSize.TextAlign = HorizontalAlignment.Right;
             _reference.olvColumnSize.AspectGetter = ListViewDelegates.ColumnSizeAspectGetter;
@@ -253,9 +244,6 @@ namespace BulkCrapUninstaller.Functions.ApplicationList
         {
             if (e.Model is not ApplicationUninstallerEntry entry) return;
 
-            var color = ApplicationListConstants.GetApplicationBackColor(entry);
-            if (!color.IsEmpty)
-                e.Item.BackColor = color;
         }
 
         public void UpdateColumnFiltering(bool anyUninstallers)
