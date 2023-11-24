@@ -43,7 +43,7 @@
 		</Compile>
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\KlocTools\KlocTools.csproj" />
+		<ProjectReference Include="..\AppTools\AppTools.csproj" />
 	</ItemGroup>
 	<Import Project="..\HelperTools\HelperTools.projitems" Label="Shared" />
 </Project>
