@@ -50,7 +50,7 @@
 		</None>
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\KlocTools\KlocTools.csproj" />
+		<ProjectReference Include="..\AppTools\AppTools.csproj" />
 		<ProjectReference Include="..\UninstallTools\UninstallTools.csproj" />
 	</ItemGroup>
 	<ItemGroup>

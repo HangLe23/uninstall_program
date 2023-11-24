@@ -365,7 +365,7 @@
     <value>searchBox1</value>
   </data>
   <data name="&gt;&gt;searchBox1.Type" xml:space="preserve">
-    <value>Klocman.Controls.SearchBox, KlocTools, Culture=neutral, PublicKeyToken=null</value>
+    <value>Klocman.Controls.SearchBox, AppTools, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;searchBox1.Parent" xml:space="preserve">
     <value>$this</value>

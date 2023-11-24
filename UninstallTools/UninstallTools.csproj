@@ -52,7 +52,7 @@
 		</None>
 	</ItemGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\KlocTools\KlocTools.csproj" />
+		<ProjectReference Include="..\AppTools\AppTools.csproj" />
 	</ItemGroup>
 	<ItemGroup>
 		<COMReference Include="Scripting">
