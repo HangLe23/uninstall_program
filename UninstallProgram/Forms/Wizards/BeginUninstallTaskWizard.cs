@@ -51,15 +51,15 @@ namespace UninstallProgram.Forms
             Close();
         }
 
-        private void buttonNext_Click(object sender, EventArgs e)
-        {
-            PageNumber = Math.Min(tabControl1.TabCount - 1, PageNumber + 1);
-        }
+        //private void buttonNext_Click(object sender, EventArgs e)
+        //{
+        //    PageNumber = Math.Min(tabControl1.TabCount - 1, PageNumber + 1);
+        //}
 
-        private void buttonPrev_Click(object sender, EventArgs e)
-        {
-            PageNumber = Math.Max(0, PageNumber - 1);
-        }
+        //private void buttonPrev_Click(object sender, EventArgs e)
+        //{
+        //    PageNumber = Math.Max(0, PageNumber - 1);
+        //}
 
         private List<BulkUninstallEntry> ConvertToTaskEntries(IEnumerable<ApplicationUninstallerEntry> targets)
         {
@@ -143,6 +143,7 @@ namespace UninstallProgram.Forms
                         taskEntries = SortTaskEntryList(taskEntries);
                         uninstallConfirmation1.SetRelatedApps(taskEntries);
                     }
+                    PageNumber = 2;
                     break;
 
                 case 2:
@@ -171,10 +172,12 @@ namespace UninstallProgram.Forms
                         processWaiterControl1.Initialize(relatedPids, !_quiet);
                         processWaiterControl1.StartUpdating();
                     }
+                    PageNumber = 3;
                     break;
 
                 case 3: // Settings
                     processWaiterControl1.StopUpdating();
+                    PageNumber = 4;
                     break;
 
                 case 4: // Final
@@ -195,19 +198,20 @@ namespace UninstallProgram.Forms
                     break;
             }
 
-            labelProgress.Text = PageNumber + 1 + " / " + tabControl1.TabCount;
-            buttonPrev.Enabled = PageNumber > 0 && (PageNumber != 1 || _anyRelatedUninstallers);
-            buttonNext.Enabled = PageNumber + 1 < tabControl1.TabCount;
+            //labelProgress.Text = PageNumber + 1 + " / " + tabControl1.TabCount;
+            //buttonPrev.Enabled = PageNumber > 0 && (PageNumber != 1 || _anyRelatedUninstallers);
+            //buttonNext.Enabled = PageNumber + 1 < tabControl1.TabCount;
 
             UseWaitCursor = false;
 
-            _previousPageNumber = PageNumber;
+            //_previousPageNumber = PageNumber;
         }
 
         private void BeginUninstallTaskWizard_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if(DialogResult != DialogResult.OK)
+            if (DialogResult != DialogResult.OK)
                 SystemRestore.CancelSysRestore();
         }
     }
 }
+

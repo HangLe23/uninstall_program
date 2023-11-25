@@ -237,10 +237,11 @@ namespace UninstallProgram.Properties {
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public bool AdvancedSimulate {
             get {
-                return ((bool)(this["AdvancedSimulate"]));
+                //return ((bool)(this["AdvancedSimulate"]));
+                return false;
             }
             set {
-                this["AdvancedSimulate"] = value;
+                this["AdvancedSimulate"] = false;
             }
         }
         
