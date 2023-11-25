@@ -250,6 +250,7 @@ namespace UninstallProgram.Forms
             uninstallerObjectListView.SelectionChanged += uninstallerObjectListView_SelectedChanged;
             uninstallerObjectListView.ItemChecked += uninstallerObjectListView_SelectedChanged;
             uninstallerObjectListView.Click += uninstallerObjectListView_Click;
+            uninstallerObjectListView.MouseDoubleClick += uninstallerObjectListView_DoubleClick;
             uninstallerObjectListView.KeyDown += uninstallerObjectListView_KeyDown;
             uninstallerObjectListView.KeyUp += HandleListViewMenuKeystroke;
             // 
