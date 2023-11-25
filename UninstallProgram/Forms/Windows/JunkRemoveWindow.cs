@@ -69,66 +69,66 @@ namespace UninstallProgram.Forms
                 if (!AppUninstaller.CheckForRunningProcesses(filters, false, this))
                     return;
 
-                if (SelectedJunk.Any(x => !(x is FileSystemJunk)))
-                {
-                    if (Settings.Default.BackupLeftovers == YesNoAsk.Ask)
-                    {
-                        switch (MessageBoxes.BackupRegistryQuestion(this))
-                        {
-                            case MessageBoxes.PressedButton.Yes:
-                                var path = MessageBoxes.SelectFolder(
-                                    Localisable.JunkRemoveWindow_SelectBackupDirectoryTitle);
+                //if (SelectedJunk.Any(x => !(x is FileSystemJunk)))
+                //{
+                //    if (Settings.Default.BackupLeftovers == YesNoAsk.Ask)
+                //    {
+                //        switch (MessageBoxes.BackupRegistryQuestion(this))
+                //        {
+                //            case MessageBoxes.PressedButton.Yes:
+                //                var path = MessageBoxes.SelectFolder(
+                //                    Localisable.JunkRemoveWindow_SelectBackupDirectoryTitle);
 
-                                if (string.IsNullOrEmpty(path))
-                                    return;
+                //                if (string.IsNullOrEmpty(path))
+                //                    return;
 
-                                try
-                                {
-                                    CreateBackup(path);
-                                    Settings.Default.BackupLeftoversDirectory = path;
-                                }
-                                catch (OperationCanceledException)
-                                {
-                                    goto case MessageBoxes.PressedButton.Yes;
-                                }
+                //                try
+                //                {
+                //                    CreateBackup(path);
+                //                    Settings.Default.BackupLeftoversDirectory = path;
+                //                }
+                //                catch (OperationCanceledException)
+                //                {
+                //                    goto case MessageBoxes.PressedButton.Yes;
+                //                }
 
-                                break;
+                //                break;
 
-                            case MessageBoxes.PressedButton.No:
-                                break;
+                //            case MessageBoxes.PressedButton.No:
+                //                break;
 
-                            default:
-                                return;
-                        }
-                    }
-                    else if (Settings.Default.BackupLeftovers == YesNoAsk.Yes)
-                    {
-                        while (true)
-                        {
-                            if (Directory.Exists(Settings.Default.BackupLeftoversDirectory))
-                            {
-                                try
-                                {
-                                    CreateBackup(Settings.Default.BackupLeftoversDirectory);
-                                    break;
-                                }
-                                catch (OperationCanceledException)
-                                {
-                                }
-                            }
+                //            default:
+                //                return;
+                //        }
+                //    }
+                //    else if (Settings.Default.BackupLeftovers == YesNoAsk.Yes)
+                //    {
+                //        while (true)
+                //        {
+                //            if (Directory.Exists(Settings.Default.BackupLeftoversDirectory))
+                //            {
+                //                try
+                //                {
+                //                    CreateBackup(Settings.Default.BackupLeftoversDirectory);
+                //                    break;
+                //                }
+                //                catch (OperationCanceledException)
+                //                {
+                //                }
+                //            }
 
-                            Settings.Default.BackupLeftoversDirectory =
-                                MessageBoxes.SelectFolder(Localisable.JunkRemoveWindow_SelectBackupDirectoryTitle);
+                //            Settings.Default.BackupLeftoversDirectory =
+                //                MessageBoxes.SelectFolder(Localisable.JunkRemoveWindow_SelectBackupDirectoryTitle);
 
-                            if (string.IsNullOrEmpty(Settings.Default.BackupLeftoversDirectory))
-                            {
-                                Settings.Default.BackupLeftoversDirectory = string.Empty;
-                                Settings.Default.BackupLeftovers = YesNoAsk.Ask;
-                                return;
-                            }
-                        }
-                    }
-                }
+                //            if (string.IsNullOrEmpty(Settings.Default.BackupLeftoversDirectory))
+                //            {
+                //                Settings.Default.BackupLeftoversDirectory = string.Empty;
+                //                Settings.Default.BackupLeftovers = YesNoAsk.Ask;
+                //                return;
+                //            }
+                //        }
+                //    }
+                //}
 
                 DialogResult = DialogResult.OK;
                 Close();

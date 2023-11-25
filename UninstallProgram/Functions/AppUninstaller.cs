@@ -246,6 +246,7 @@ namespace UninstallProgram.Functions
                     status.Start();
 
                     UninstallProgressWindow.ShowUninstallDialog(status, entries => SearchForAndRemoveJunk(entries, allUninstallerList));
+                    //UninstallProgressWindow.
 
                     var junkRemoveTargetsQuery = from bulkUninstallEntry in status.AllUninstallersList
                                                  where bulkUninstallEntry.CurrentStatus == UninstallStatus.Completed
@@ -254,8 +255,8 @@ namespace UninstallProgram.Functions
                                                            && !bulkUninstallEntry.UninstallerEntry.RegKeyStillExists())
                                                  select bulkUninstallEntry.UninstallerEntry;
 
-                    if (MessageBoxes.LookForJunkQuestion())
-                        SearchForAndRemoveJunk(junkRemoveTargetsQuery, allUninstallerList);
+                    //if (MessageBoxes.LookForJunkQuestion())
+                    SearchForAndRemoveJunk(junkRemoveTargetsQuery, allUninstallerList);
 
                     if (_settings.ExternalEnable && _settings.ExternalPostCommands.IsNotEmpty())
                     {
