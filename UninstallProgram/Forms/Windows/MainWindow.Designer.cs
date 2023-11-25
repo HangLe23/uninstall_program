@@ -33,14 +33,15 @@ namespace UninstallProgram.Forms
             olvColumnInstallDate = new OLVColumn();
             olvColumnSize = new OLVColumn();
             olvColumnDisplayVersion = new OLVColumn();
-            olvColumnInstallSource = new OLVColumn();
-            olvColumnInstallLocation = new OLVColumn();
             treeMap1 = new SimpleTreeMap.TreeMap();
             toolStrip = new ToolStrip();
+            toolStripButtonUninstall = new ToolStripButton();
             statusStrip1 = new StatusStrip();
             toolStripLabelStatus = new ToolStripStatusLabel();
             toolStripLabelSize = new ToolStripStatusLabel();
             toolStripLabelTotal = new ToolStripStatusLabel();
+            olvColumnInstallSource = new OLVColumn();
+            olvColumnInstallLocation = new OLVColumn();
             settingsSidebarPanel = new Panel();
             propertiesSidebar = new PropertiesSidebar();
             groupBox1 = new GroupBox();
@@ -156,7 +157,6 @@ namespace UninstallProgram.Forms
             globalHotkeys1 = new Klocman.Subsystems.GlobalHotkeys();
             splashScreen1 = new Klocman.Forms.SplashScreen();
             usageTracker = new UsageTracker();
-            toolStripButtonUninstall = new ToolStripButton();
             ((ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -230,8 +230,7 @@ namespace UninstallProgram.Forms
             uninstallerObjectListView.BorderStyle = BorderStyle.None;
             uninstallerObjectListView.CellEditActivation = ObjectListView.CellEditActivateMode.DoubleClick;
             uninstallerObjectListView.CellEditUseWholeCell = false;
-            uninstallerObjectListView.CheckBoxes = false;
-            uninstallerObjectListView.Columns.AddRange(new ColumnHeader[] { olvColumnDisplayName, olvColumnPublisher, olvColumnInstallDate, olvColumnSize, olvColumnDisplayVersion});
+            uninstallerObjectListView.Columns.AddRange(new ColumnHeader[] { olvColumnDisplayName, olvColumnPublisher, olvColumnInstallDate, olvColumnSize, olvColumnDisplayVersion });
             resources.ApplyResources(uninstallerObjectListView, "uninstallerObjectListView");
             uninstallerObjectListView.FullRowSelect = true;
             uninstallerObjectListView.GridLines = true;
@@ -277,14 +276,6 @@ namespace UninstallProgram.Forms
             // 
             resources.ApplyResources(olvColumnDisplayVersion, "olvColumnDisplayVersion");
             // 
-            // olvColumnInstallSource
-            // 
-            resources.ApplyResources(olvColumnInstallSource, "olvColumnInstallSource");
-            // 
-            // olvColumnInstallLocation
-            // 
-            resources.ApplyResources(olvColumnInstallLocation, "olvColumnInstallLocation");
-            // 
             // treeMap1
             // 
             resources.ApplyResources(treeMap1, "treeMap1");
@@ -301,6 +292,12 @@ namespace UninstallProgram.Forms
             toolStrip.LayoutStyle = ToolStripLayoutStyle.HorizontalStackWithOverflow;
             toolStrip.Name = "toolStrip";
             toolStrip.TabStop = true;
+            // 
+            // toolStripButtonUninstall
+            // 
+            resources.ApplyResources(toolStripButtonUninstall, "toolStripButtonUninstall");
+            toolStripButtonUninstall.Name = "toolStripButtonUninstall";
+            toolStripButtonUninstall.Click += RunLoudUninstall;
             // 
             // statusStrip1
             // 
@@ -332,6 +329,14 @@ namespace UninstallProgram.Forms
             toolStripLabelTotal.BorderSides = ToolStripStatusLabelBorderSides.Left | ToolStripStatusLabelBorderSides.Top | ToolStripStatusLabelBorderSides.Right | ToolStripStatusLabelBorderSides.Bottom;
             toolStripLabelTotal.BorderStyle = Border3DStyle.Sunken;
             toolStripLabelTotal.Name = "toolStripLabelTotal";
+            // 
+            // olvColumnInstallSource
+            // 
+            resources.ApplyResources(olvColumnInstallSource, "olvColumnInstallSource");
+            // 
+            // olvColumnInstallLocation
+            // 
+            resources.ApplyResources(olvColumnInstallLocation, "olvColumnInstallLocation");
             // 
             // settingsSidebarPanel
             // 
@@ -967,9 +972,8 @@ namespace UninstallProgram.Forms
             // 
             // submitFeedbackToolStripMenuItem
             // 
-            /*resources.ApplyResources(submitFeedbackToolStripMenuItem, "submitFeedbackToolStripMenuItem");
             submitFeedbackToolStripMenuItem.Name = "submitFeedbackToolStripMenuItem";
-            //submitFeedbackToolStripMenuItem.Click += OpenSubmitFeedbackWindow;*/
+            resources.ApplyResources(submitFeedbackToolStripMenuItem, "submitFeedbackToolStripMenuItem");
             // 
             // toolStripSeparator18
             // 
@@ -1027,12 +1031,6 @@ namespace UninstallProgram.Forms
             // usageTracker
             // 
             usageTracker.ContainerControl = this;
-            // 
-            // toolStripButtonUninstall
-            // 
-            resources.ApplyResources(toolStripButtonUninstall, "toolStripButtonUninstall");
-            toolStripButtonUninstall.Name = "toolStripButtonUninstall";
-            toolStripButtonUninstall.Click += RunLoudUninstall;
             // 
             // MainWindow
             // 
