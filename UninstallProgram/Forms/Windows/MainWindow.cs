@@ -1,5 +1,4 @@
 ﻿/*
-    Copyright (c) 2017 Marcin Szeniak (https://github.com/Klocman/)
     Apache License Version 2.0
 */
 
@@ -424,7 +423,7 @@ namespace UninstallProgram.Forms
                 {
                     _previousListLegendState = _setMan.Selected.Settings.UninstallerListShowLegend;
                 }
-                        
+
             });
         }
 
@@ -457,7 +456,7 @@ namespace UninstallProgram.Forms
             }
         }
 
-     
+
         private void BackgroundSearchForUpdates()
         {
             UpdateGrabber.AutoUpdate(() => _listView.FirstRefreshCompleted,
@@ -492,7 +491,8 @@ namespace UninstallProgram.Forms
 
                 uninstallerObjectListView.ShowGroups = y.NewValue;
                 _listView.RefreshList();
-            }, x => x.UninstallerListUseGroups, this)*/;
+            }, x => x.UninstallerListUseGroups, this)*/
+            ;
 
             settings.Subscribe(RefreshList, x => x.FilterHideMicrosoft, this);
             settings.Subscribe(RefreshList, x => x.FilterShowUpdates, this);
@@ -684,7 +684,7 @@ namespace UninstallProgram.Forms
                 !WindowsTools.IsNetworkAvailable())
                 return;
 
-            
+
         }
 
         private void MainWindow_Shown(object sender, EventArgs e)
@@ -726,7 +726,7 @@ namespace UninstallProgram.Forms
 
         private void OnFirstApplicationStart()
         {
-            
+
 
             // On first start the updates are not searched from constructor to give user a chance to disable them.
             BackgroundSearchForUpdates();

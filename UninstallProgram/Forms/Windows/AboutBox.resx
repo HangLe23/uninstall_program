@@ -1169,7 +1169,7 @@
     <value>CenterParent</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
-    <value>About BCUninstaller (Bulk Crap Uninstaller)</value>
+    <value>About</value>
   </data>
   <data name="&gt;&gt;usageTracker1.Name" xml:space="preserve">
     <value>usageTracker1</value>
