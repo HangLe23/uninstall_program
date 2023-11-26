@@ -34,8 +34,6 @@ namespace UninstallProgram.Forms
             olvColumnSize = new OLVColumn();
             olvColumnDisplayVersion = new OLVColumn();
             treeMap1 = new SimpleTreeMap.TreeMap();
-            toolStrip = new ToolStrip();
-            toolStripButtonUninstall = new ToolStripButton();
             statusStrip1 = new StatusStrip();
             toolStripLabelStatus = new ToolStripStatusLabel();
             toolStripLabelSize = new ToolStripStatusLabel();
@@ -167,7 +165,6 @@ namespace UninstallProgram.Forms
             splitContainerListAndMap.SuspendLayout();
             listViewPanel.SuspendLayout();
             ((ISupportInitialize)uninstallerObjectListView).BeginInit();
-            toolStrip.SuspendLayout();
             statusStrip1.SuspendLayout();
             settingsSidebarPanel.SuspendLayout();
             groupBox1.SuspendLayout();
@@ -189,7 +186,6 @@ namespace UninstallProgram.Forms
             // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.Controls.Add(splitContainerListAndMap);
-            splitContainer1.Panel2.Controls.Add(toolStrip);
             splitContainer1.Panel2.Controls.Add(statusStrip1);
             // 
             // advancedFilters1
@@ -250,9 +246,9 @@ namespace UninstallProgram.Forms
             uninstallerObjectListView.SelectionChanged += uninstallerObjectListView_SelectedChanged;
             uninstallerObjectListView.ItemChecked += uninstallerObjectListView_SelectedChanged;
             uninstallerObjectListView.Click += uninstallerObjectListView_Click;
-            uninstallerObjectListView.MouseDoubleClick += uninstallerObjectListView_DoubleClick;
             uninstallerObjectListView.KeyDown += uninstallerObjectListView_KeyDown;
             uninstallerObjectListView.KeyUp += HandleListViewMenuKeystroke;
+            uninstallerObjectListView.MouseDoubleClick += uninstallerObjectListView_DoubleClick;
             // 
             // olvColumnDisplayName
             // 
@@ -283,22 +279,6 @@ namespace UninstallProgram.Forms
             treeMap1.Name = "treeMap1";
             treeMap1.ShowToolTip = false;
             treeMap1.UseLogValueScaling = false;
-            // 
-            // toolStrip
-            // 
-            toolStrip.GripStyle = ToolStripGripStyle.Hidden;
-            toolStrip.ImageScalingSize = new System.Drawing.Size(22, 22);
-            resources.ApplyResources(toolStrip, "toolStrip");
-            toolStrip.Items.AddRange(new ToolStripItem[] { toolStripButtonUninstall });
-            toolStrip.LayoutStyle = ToolStripLayoutStyle.HorizontalStackWithOverflow;
-            toolStrip.Name = "toolStrip";
-            toolStrip.TabStop = true;
-            // 
-            // toolStripButtonUninstall
-            // 
-            resources.ApplyResources(toolStripButtonUninstall, "toolStripButtonUninstall");
-            toolStripButtonUninstall.Name = "toolStripButtonUninstall";
-            toolStripButtonUninstall.Click += RunLoudUninstall;
             // 
             // statusStrip1
             // 
@@ -383,7 +363,7 @@ namespace UninstallProgram.Forms
             // uninstallListContextMenuStrip
             // 
             uninstallListContextMenuStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            uninstallListContextMenuStrip.Items.AddRange(new ToolStripItem[] { uninstallContextMenuStripItem, quietUninstallContextMenuStripItem, manualUninstallToolStripMenuItem1, uninstallUsingMsiExecContextMenuStripItem, toolStripSeparator3, excludeToolStripMenuItem, includeToolStripMenuItem, toolStripSeparatorFiltering, runToolStripMenuItem, toolStripSeparator8, copyToClipboardContextMenuStripItem, deleteRegistryEntryContextMenuStripItem, renameContextMenuStripItem, toolStripSeparator6, openInExplorerContextMenuStripItem, openWebPageContextMenuStripItem, lookUpOnlineToolStripMenuItem, rateToolStripMenuItem, toolStripSeparator7, propertiesContextMenuStripItem });
+            uninstallListContextMenuStrip.Items.AddRange(new ToolStripItem[] { uninstallContextMenuStripItem });
             uninstallListContextMenuStrip.Name = "uninstallListContextMenuStrip";
             resources.ApplyResources(uninstallListContextMenuStrip, "uninstallListContextMenuStrip");
             uninstallListContextMenuStrip.Opening += UpdateUninstallListContextMenuStrip;
@@ -808,9 +788,9 @@ namespace UninstallProgram.Forms
             // 
             // viewTweaksToolStripMenuItem
             // 
-            viewTweaksToolStripMenuItem.Name = "viewTweaksToolStripMenuItem";
+            /*viewTweaksToolStripMenuItem.Name = "viewTweaksToolStripMenuItem";
             resources.ApplyResources(viewTweaksToolStripMenuItem, "viewTweaksToolStripMenuItem");
-            viewTweaksToolStripMenuItem.Click += viewTweaksToolStripMenuItem_Click;
+            viewTweaksToolStripMenuItem.Click += viewTweaksToolStripMenuItem_Click;*/
             // 
             // viewUnregisteredToolStripMenuItem
             // 
@@ -1056,8 +1036,6 @@ namespace UninstallProgram.Forms
             splitContainerListAndMap.ResumeLayout(false);
             listViewPanel.ResumeLayout(false);
             ((ISupportInitialize)uninstallerObjectListView).EndInit();
-            toolStrip.ResumeLayout(false);
-            toolStrip.PerformLayout();
             statusStrip1.ResumeLayout(false);
             statusStrip1.PerformLayout();
             settingsSidebarPanel.ResumeLayout(false);
@@ -1110,7 +1088,6 @@ namespace UninstallProgram.Forms
         private ToolStripMenuItem checkForUpdatesToolStripMenuItem;
         private ToolStripMenuItem resetSettingsToolStripMenuItem;
         private ToolStripMenuItem aboutToolStripMenuItem;
-        private ToolStrip toolStrip;
         private SaveFileDialog createBackupFileDialog;
         private ToolStripMenuItem quietUninstallContextMenuStripItem;
         private ToolStripSeparator toolStripSeparator8;
@@ -1217,7 +1194,6 @@ namespace UninstallProgram.Forms
         private ToolStripMenuItem viewTweaksToolStripMenuItem;
         private ToolStripMenuItem slantcoToolStripMenuItem;
         private ToolStripMenuItem createRestorePointToolStripMenuItem;
-        private ToolStripButton toolStripButtonUninstall;
     }
 }
 

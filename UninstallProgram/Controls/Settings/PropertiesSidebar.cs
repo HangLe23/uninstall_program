@@ -35,7 +35,7 @@ namespace UninstallProgram.Controls
             _settings.BindControl(checkBoxListProtected, x => x.FilterShowProtected, this);
             _settings.BindControl(checkBoxShowStoreApps, x => x.FilterShowStoreApps, this);
             _settings.BindControl(checkBoxWinFeature, x => x.FilterShowWinFeatures, this);
-            _settings.BindControl(checkBoxTweaks, x => x.FilterShowTweaks, this);
+            //_settings.BindControl(checkBoxTweaks, x => x.FilterShowTweaks, this);
             _settings.BindControl(checkBoxOrphans, x => x.AdvancedDisplayOrphans, this);
 
             _settings.SendUpdates(this);

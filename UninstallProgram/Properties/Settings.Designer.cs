@@ -237,11 +237,10 @@ namespace UninstallProgram.Properties {
         [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public bool AdvancedSimulate {
             get {
-                //return ((bool)(this["AdvancedSimulate"]));
-                return false;
+                return ((bool)(this["AdvancedSimulate"]));
             }
             set {
-                this["AdvancedSimulate"] = false;
+                this["AdvancedSimulate"] = value;
             }
         }
         
@@ -966,20 +965,6 @@ namespace UninstallProgram.Properties {
             }
             set {
                 this["FoldersScanRemovable"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Configuration.SettingsProviderAttribute(typeof(PortableSettingsProvider.PortableSettingsProvider))]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public bool FilterShowTweaks {
-            get {
-                return ((bool)(this["FilterShowTweaks"]));
-            }
-            set {
-                this["FilterShowTweaks"] = value;
             }
         }
         

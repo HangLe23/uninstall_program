@@ -9427,18 +9427,6 @@ namespace BrightIdeasSoftware
 
             if (_listItemLookup.TryGetValue(modelObject, out var oli))
                 return oli;
-
-            /*
-            for (int i = 0; i < this.Items.Count; i++)
-            {
-                var olvi = this.Items[i] as OLVListItem;
-                Debug.Assert(olvi != null, "olvi != null");
-
-                var rowObject = olvi.RowObject;
-                if (rowObject != null && rowObject == modelObject)
-                    return olvi;
-            }
-            */
             return null;
         }
 
