@@ -111,9 +111,9 @@ namespace UninstallProgram.Functions.ApplicationList
                     ComparisonMethod.Equals, nameof(ApplicationUninstallerEntry.IsUpdate))));
 
             // TODO Better detection, can lead to bugs down the line
-            if (!_settings.Settings.FilterShowTweaks)
+            /*if (!_settings.Settings.FilterShowTweaks)
                 results.Add(new Filter("Tweaks", true, new FilterCondition(@"\Resources\Scripts\Tweak",
-                    ComparisonMethod.Contains, nameof(ApplicationUninstallerEntry.UninstallString))));
+                    ComparisonMethod.Contains, nameof(ApplicationUninstallerEntry.UninstallString))));*/
 
             return results;
         }
@@ -142,11 +142,11 @@ namespace UninstallProgram.Functions.ApplicationList
 
             if (!_settings.Settings.FilterShowUpdates && entry.IsUpdate) return false;
 
-            if (entry.RatingId != null)
+            /*if (entry.RatingId != null)
             {
                 if (!_settings.Settings.FilterShowTweaks && entry.RatingId.StartsWith("tweak", StringComparison.Ordinal))
                     return false;
-            }
+            }*/
 
             if (string.IsNullOrEmpty(_filteringFilterCondition.FilterText)) return true;
 

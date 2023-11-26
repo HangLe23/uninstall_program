@@ -474,25 +474,14 @@ namespace UninstallProgram.Forms
             settings.BindControl(useSystemThemeToolStripMenuItem, x => x.WindowUseSystemTheme, this);
             settings.BindControl(displayStatusbarToolStripMenuItem, x => x.ToolbarsShowStatusbar, this);
 
-            settings.BindControl(showColorLegendToolStripMenuItem, x => x.UninstallerListShowLegend, this);
+            //settings.BindControl(showColorLegendToolStripMenuItem, x => x.UninstallerListShowLegend, this);
 
             settings.Subscribe(RefreshSidebarVisibility,
                 x => x.ToolbarsShowSettings, this);
-            settings.Subscribe((x, y) => toolStrip.Visible = y.NewValue,
-                x => x.ToolbarsShowToolbar, this);
             settings.Subscribe((x, y) => _styleController.SetStyles(y.NewValue),
                 x => x.WindowUseSystemTheme, this);
             settings.Subscribe((x, y) => statusStrip1.Visible = y.NewValue,
                 x => x.ToolbarsShowStatusbar, this);
-
-            /*settings.Subscribe((x, y) =>
-            {
-                if (_listView.CheckIsAppDisposed()) return;
-
-                uninstallerObjectListView.ShowGroups = y.NewValue;
-                _listView.RefreshList();
-            }, x => x.UninstallerListUseGroups, this)*/
-            ;
 
             settings.Subscribe(RefreshList, x => x.FilterHideMicrosoft, this);
             settings.Subscribe(RefreshList, x => x.FilterShowUpdates, this);
@@ -500,7 +489,7 @@ namespace UninstallProgram.Forms
             settings.Subscribe(RefreshList, x => x.FilterShowProtected, this);
             settings.Subscribe(RefreshList, x => x.FilterShowStoreApps, this);
             settings.Subscribe(RefreshList, x => x.FilterShowWinFeatures, this);
-            settings.Subscribe(RefreshList, x => x.FilterShowTweaks, this);
+            //settings.Subscribe(RefreshList, x => x.FilterShowTweaks, this);
 
         }
 
@@ -1530,7 +1519,7 @@ namespace UninstallProgram.Forms
             s.FilterShowUpdates = true;
             s.FilterShowWinFeatures = true;
             s.FilterShowStoreApps = true;
-            s.FilterShowTweaks = true;
+            //s.FilterShowTweaks = true;
         }
 
         private void basicApplicationsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1544,7 +1533,7 @@ namespace UninstallProgram.Forms
             s.FilterShowUpdates = false;
             s.FilterShowWinFeatures = false;
             s.FilterShowStoreApps = true;
-            s.FilterShowTweaks = false;
+            //s.FilterShowTweaks = false;
         }
 
         private void advancedApplicationsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1558,7 +1547,7 @@ namespace UninstallProgram.Forms
             s.FilterShowUpdates = false;
             s.FilterShowWinFeatures = false;
             s.FilterShowStoreApps = true;
-            s.FilterShowTweaks = true;
+            //s.FilterShowTweaks = true;
         }
 
         private void systemComponentsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1572,7 +1561,7 @@ namespace UninstallProgram.Forms
             s.FilterShowUpdates = false;
             s.FilterShowWinFeatures = true;
             s.FilterShowStoreApps = true;
-            s.FilterShowTweaks = true;
+            //s.FilterShowTweaks = true;
         }
 
         private void everythingToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1586,7 +1575,7 @@ namespace UninstallProgram.Forms
             s.FilterShowUpdates = true;
             s.FilterShowWinFeatures = true;
             s.FilterShowStoreApps = true;
-            s.FilterShowTweaks = true;
+            //s.FilterShowTweaks = true;
         }
 
         private void onlyWebBrowsersToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1600,14 +1589,14 @@ namespace UninstallProgram.Forms
             s.FilterShowUpdates = true;
             s.FilterShowWinFeatures = true;
             s.FilterShowStoreApps = true;
-            s.FilterShowTweaks = true;
+            //s.FilterShowTweaks = true;
         }
 
-        private void viewTweaksToolStripMenuItem_Click(object sender, EventArgs e)
+        /*private void viewTweaksToolStripMenuItem_Click(object sender, EventArgs e)
         {
             everythingToolStripMenuItem_Click(sender, e);
             filterEditor1.Search(@"\Resources\Scripts\Tweak", ComparisonMethod.Contains, nameof(ApplicationUninstallerEntry.UninstallString));
-        }
+        }*/
 
         private void createRestorePointToolStripMenuItem_Click(object sender, EventArgs e)
         {
