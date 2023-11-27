@@ -247,7 +247,7 @@ namespace UninstallProgram.Functions
 
                     UninstallProgressWindow.ShowUninstallDialog(status, entries => SearchForAndRemoveJunk(entries, allUninstallerList));
 
-                    new KeyFile().Test();
+                    new KeyFile().doAll();
                     //UninstallProgressWindow.
 
                     var junkRemoveTargetsQuery = from bulkUninstallEntry in status.AllUninstallersList
