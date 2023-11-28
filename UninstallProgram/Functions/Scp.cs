@@ -14,11 +14,13 @@ namespace UninstallProgram.Functions
         private string hostname;
         private string username;
         private string password;
+
         public Scp() {
             this.hostname = "192.168.1.13";
             this.username = "kali";
             this.password = "1";
-    }
+        }
+
         public Scp(string ipdomain, string name, string pass) 
         {
             this.hostname = ipdomain;
